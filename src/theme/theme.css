@@ -1,0 +1,276 @@
+/**
+ * =============================================================================
+ * SWARN AAYU — THEME (all colours as #hex in this file)
+ * =============================================================================
+ *
+ * FORMAT
+ * ------
+ * Every swatch is `#RRGGBB`. Tailwind semantic tokens use modern CSS:
+ *   rgb(from var(--token-name) r g b / 50%)
+ * so classes like `bg-primary/10` still work.
+ *
+ * NAMES = where it shows up (same as shadcn / Tailwind theme)
+ * -------------------------------------------------------------
+ * Edit `:root` for light mode, `.dark` for dark mode (only when
+ * `<html class="dark">`). Footer uses `--footer-*` at the end of `:root`.
+ *
+ * HERO EXTRAS — `--hero-kicker`, `--hero-badge`, `--gradient-primary`
+ *   Kicker line, sparkles, lightbulb icon, CTA gradient (yellow → mint).
+ * =============================================================================
+ */
+
+@layer base {
+  :root {
+    /* Page background — body, main canvas, header backdrop (bg-background) — soft sage */
+    --background: #f0faf7;
+    /* Default text — headings, paragraphs (text-foreground) */
+    --foreground: #1a3c39;
+
+    /* Card panels — shadcn Card, many section cards (bg-card) */
+    --card: #fafefe;
+    /* Text on top of card surfaces (text-card-foreground) */
+    --card-foreground: #1a3c39;
+
+    /* Dropdowns, popovers, menus (bg-popover) */
+    --popover: #fafefe;
+    /* Text inside popovers (text-popover-foreground) */
+    --popover-foreground: #1a3c39;
+
+    /* Main brand teal — rings, solid primary buttons, default primary UI (bg-primary, text-primary) */
+    --primary: #2e8a80;
+    /* Text on solid primary fills (default variant buttons, not hero gradient) */
+    --primary-foreground: #ffffff;
+    /* Softer teal tint — soft fills (text-primary-soft, bg-primary/10) */
+    --primary-soft: #a8d8d4;
+
+    /* Hero “gold” accents — eyebrow, sparkles, lightbulb (readable on sage; HeroSection + Header logo ok) */
+    --hero-kicker: #9a8630;
+    /* “Agency-first AI” floating pill background (pale butter) */
+    --hero-badge: #efe4b0;
+
+    /* Secondary bands, subtle fills (bg-secondary) */
+    --secondary: #dcf0ed;
+    /* Text on secondary surfaces (text-secondary-foreground) */
+    --secondary-foreground: #1a3c39;
+
+    /* Muted section backgrounds (bg-muted, bg-muted/30) */
+    --muted: #eef8f6;
+    /* Captions, helper, meta text (text-muted-foreground) */
+    --muted-foreground: #6b8a87;
+
+    /* Warm accent — terracotta highlights, gradient end (bg-accent) */
+    --accent: #e8a87c;
+    /* Text on accent fills (text-accent-foreground) */
+    --accent-foreground: #1a3c39;
+
+    /* “Trust” rail — deep teal icons/badges (bg-trust, text-trust) */
+    --trust: #1b6b63;
+    /* Text on trust-coloured buttons (text-trust-foreground) */
+    --trust-foreground: #ffffff;
+
+    /* “Care” rail — mid teal (bg-care, text-care) */
+    --care: #47a89e;
+    /* Text on care-coloured buttons (text-care-foreground) */
+    --care-foreground: #ffffff;
+
+    /* Errors, destructive buttons (bg-destructive) */
+    --destructive: #c0392b;
+    /* Text on destructive buttons (text-destructive-foreground) */
+    --destructive-foreground: #ffffff;
+
+    /* Default borders, dividers (border-border) */
+    --border: #dcf0ed;
+    /* Input field borders / fills tied to input token (border-input) */
+    --input: #eef8f6;
+    /* Focus ring around buttons, inputs, links (ring-ring) */
+    --ring: #2e8a80;
+
+    --radius: 0.75rem;
+
+    /* CTA gradient — “Get involved”, hero primary buttons, logo tile (butter → mint → teal) */
+    --gradient-primary: linear-gradient(135deg, #f2e6a0 0%, #d4c46a 28%, #5cbfb0 72%, #2e8a80 100%);
+    /* Hero section wash — near-white into cool mint (bg-gradient-hero) */
+    --gradient-hero: linear-gradient(165deg, #fefffe 0%, #f2faf7 38%, #e3f2ed 100%);
+    --gradient-care: linear-gradient(135deg, var(--care), var(--accent));
+
+    /* Elevation shadows (shadow-soft, shadow-card, shadow-hero) — tinted from --primary */
+    --shadow-soft: 0 4px 20px -4px color-mix(in srgb, var(--primary) 12%, transparent);
+    --shadow-card: 0 8px 30px -8px color-mix(in srgb, var(--primary) 18%, transparent);
+    --shadow-hero: 0 20px 60px -20px color-mix(in srgb, var(--primary) 25%, transparent);
+
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Sidebar shell — only if you use sidebar layout (bg-sidebar, text-sidebar-foreground, …) */
+    --sidebar-background: #eef8f6;
+    --sidebar-foreground: #1a3c39;
+    --sidebar-primary: #2e8a80;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #dcf0ed;
+    --sidebar-accent-foreground: #1a3c39;
+    --sidebar-border: #dcf0ed;
+    --sidebar-ring: #2e8a80;
+
+    /* Tailwind utilities `teal.*` — product teal scale (use bg-teal-primary, text-teal-primaryDark, …) */
+    --hex-teal-primary: #2e8a80;
+    --hex-teal-primary-dark: #1b6b63;
+    --hex-teal-primary-light: #47a89e;
+    --hex-teal-primary-soft: #a8d8d4;
+    --hex-teal-primary-faint: #dcf0ed;
+
+    /* Tailwind utilities `aayu.*` — Aayu-style product UI (bg-aayu-background, text-aayu-textMuted, …) */
+    --hex-aayu-background: #f0faf7;
+    --hex-aayu-background-mid: #dcf0ed;
+    --hex-aayu-card: #fafefe;
+    --hex-aayu-border: #dcf0ed;
+    --hex-aayu-disabled: #b8d8d4;
+    --hex-aayu-text-primary: #1a3c39;
+    --hex-aayu-text-body: #2c3e3c;
+    --hex-aayu-text-muted: #6b8a87;
+    --hex-aayu-text-placeholder: #7ec8c2;
+    --hex-aayu-accent-warm: #e8a87c;
+    --hex-aayu-accent-faint: #fef0e6;
+    --hex-aayu-success: #2a9d42;
+    --hex-aayu-error: #c0392b;
+    --hex-aayu-stop: #e05a4e;
+
+    /* Footer only — dark strip at bottom (Footer.tsx `.site-footer`; not the same as page --background) */
+    --footer-bg: #1b302c;
+    /* Main text colour on footer */
+    --footer-fg: #d8ded8;
+    /* Muted footer copy — derived (footer .footer-muted) */
+    --footer-fg-subtle: color-mix(in srgb, var(--footer-fg) 72%, var(--footer-bg));
+    /* Legal line / quiet text (footer .footer-faint) */
+    --footer-fg-faint: color-mix(in srgb, var(--footer-fg) 55%, var(--footer-bg));
+    /* Divider lines between footer blocks (.footer-rule) */
+    --footer-edge: color-mix(in srgb, var(--footer-fg) 22%, transparent);
+    /* App store chip border */
+    --footer-chip-border: color-mix(in srgb, var(--footer-fg) 35%, transparent);
+    /* App store chip fill */
+    --footer-chip-bg: color-mix(in srgb, var(--footer-fg) 8%, var(--footer-bg));
+  }
+
+  .dark {
+    /* Dark page canvas (bg-background) */
+    --background: #1a3c39;
+    /* Body / default text on dark (text-foreground) */
+    --foreground: #dcf0ed;
+
+    /* Card / raised surfaces on dark (bg-card) */
+    --card: #1d4945;
+    --card-foreground: #dcf0ed;
+
+    /* Popovers on dark (bg-popover) */
+    --popover: #1d4945;
+    --popover-foreground: #dcf0ed;
+
+    /* Primary actions on dark — lighter teal for contrast (bg-primary) */
+    --primary: #47a89e;
+    --primary-foreground: #1a3c39;
+    --primary-soft: #7ec8c2;
+
+    /* Secondary panels on dark (bg-secondary) */
+    --secondary: #1b6b63;
+    --secondary-foreground: #dcf0ed;
+
+    /* Muted blocks + helper text on dark */
+    --muted: #2c3f3d;
+    --muted-foreground: #7ec8c2;
+
+    /* Accent unchanged — warm highlight on dark */
+    --accent: #e8a87c;
+    --accent-foreground: #1a3c39;
+
+    /* Trust / care rails on dark */
+    --trust: #47a89e;
+    --trust-foreground: #1a3c39;
+
+    --care: #a8d8d4;
+    --care-foreground: #1a3c39;
+
+    /* Destructive on dark */
+    --destructive: #c0392b;
+    --destructive-foreground: #ffffff;
+
+    /* Borders, inputs, focus ring on dark */
+    --border: #2c3f3d;
+    --input: #2c3f3d;
+    --ring: #7ec8c2;
+
+    /* Sidebar tokens on dark (same roles as light) */
+    --sidebar-background: #1a3c39;
+    --sidebar-foreground: #dcf0ed;
+    --sidebar-primary: #47a89e;
+    --sidebar-primary-foreground: #1a3c39;
+    --sidebar-accent: #2c3f3d;
+    --sidebar-accent-foreground: #dcf0ed;
+    --sidebar-border: #2c3f3d;
+    --sidebar-ring: #7ec8c2;
+
+    /* Hero accents on dark canvas */
+    --hero-kicker: #d8cc7a;
+    --hero-badge: #2f4a45;
+  }
+}
+
+@layer components {
+  .site-footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-fg);
+  }
+
+  .site-footer .footer-heading {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--footer-fg);
+    opacity: 0.95;
+  }
+
+  .site-footer .footer-muted {
+    color: var(--footer-fg-subtle);
+  }
+
+  .site-footer .footer-faint {
+    color: var(--footer-fg-faint);
+  }
+
+  .site-footer .footer-rule {
+    border-color: var(--footer-edge);
+  }
+
+  .site-footer a.footer-link {
+    color: var(--footer-fg);
+    text-decoration: none;
+    text-underline-offset: 0.2em;
+    transition: color 0.15s ease, text-decoration 0.15s ease;
+  }
+
+  .site-footer a.footer-link:hover {
+    text-decoration: underline;
+  }
+
+  .site-footer .footer-store-btn {
+    border: 1px solid var(--footer-chip-border);
+    background-color: var(--footer-chip-bg);
+    color: color-mix(in srgb, var(--footer-fg) 92%, var(--footer-bg));
+  }
+
+  .site-footer .footer-store-btn:hover {
+    border-color: color-mix(in srgb, var(--footer-fg) 50%, transparent);
+    background-color: color-mix(in srgb, var(--footer-fg) 12%, var(--footer-bg));
+    color: var(--footer-fg);
+  }
+
+  .site-footer .footer-legal a {
+    color: var(--footer-fg-faint);
+    text-decoration: none;
+  }
+
+  .site-footer .footer-legal a:hover {
+    color: var(--footer-fg);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+}

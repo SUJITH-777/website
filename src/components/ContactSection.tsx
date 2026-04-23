@@ -5,7 +5,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, MapPin, Users, Building, Heart } from "lucide-react";
+import { ORGANIZATION_ADDRESS, ORGANIZATION_MAPS_URL } from "@/constants/contact";
+import { CONTACT_FORM_URL } from "@/config/contact-api";
+import { Mail, Phone, MapPin, Users, Building, Heart, ExternalLink, Loader2 } from "lucide-react";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -13,27 +15,52 @@ const ContactSection = () => {
     email: "",
     subject: "",
     message: "",
-    type: "general"
+    type: "general",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Simulate form submission
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for your interest. We'll get back to you soon.",
-    });
-    
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-      type: "general"
-    });
+    setIsSubmitting(true);
+    try {
+      const res = await fetch(CONTACT_FORM_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = (await res.json().catch(() => ({}))) as { error?: string; ok?: boolean };
+
+      if (!res.ok) {
+        toast({
+          variant: "destructive",
+          title: "Message not sent",
+          description: data.error ?? "Something went wrong. Please try again.",
+        });
+        return;
+      }
+
+      toast({
+        title: "Message sent",
+        description: "Thank you for reaching out. We will get back to you as soon as we can.",
+      });
+
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+        type: "general",
+      });
+    } catch {
+      toast({
+        variant: "destructive",
+        title: "Message not sent",
+        description: "Network error. Check your connection, or email contact@swarnaayu.com directly.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -44,27 +71,26 @@ const ContactSection = () => {
   };
 
   const contactTypes = [
-    { value: "general", label: "General Inquiry", icon: Mail },
-    { value: "family", label: "For Families", icon: Heart },
-    { value: "provider", label: "Service Provider", icon: Building },
-    { value: "investor", label: "Investment", icon: Users }
+    { value: "general", label: "General", icon: Mail },
+    { value: "seniors_families", label: "Seniors & families", icon: Heart },
+    { value: "schools", label: "Schools & educators", icon: Building },
+    { value: "thinkers", label: "Thinkers & learners", icon: Users },
   ];
 
   return (
-    <section id="contact" className="py-0 bg-muted/30">
+    <section id="contact" className="scroll-mt-24 py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
-          <Badge variant="secondary" className="mb-4">Get In Touch</Badge>
+          <Badge variant="secondary" className="mb-4">
+            Get involved
+          </Badge>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-            Join the{" "}
-            <span className="bg-gradient-primary bg-clip-text text-transparent">
-              Swarn Aayu Journey
-            </span>
+            <span className="bg-gradient-primary bg-clip-text text-transparent">Contact us</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Whether you're a family seeking care solutions, a service provider interested in partnerships, 
-            or an investor exploring opportunities, we'd love to hear from you.
+            Reach out about Aayu, Curiosity Coach for your school, Thinking Matters cohorts, or
+            anything else you&apos;d like to explore with the foundation.
           </p>
         </div>
 
@@ -78,7 +104,7 @@ const ContactSection = () => {
                 {/* Contact Type Selection */}
                 <div>
                   <label className="text-sm font-medium text-foreground mb-3 block">
-                    I'm interested as a:
+                    I&apos;m reaching out as:
                   </label>
                   <div className="grid grid-cols-2 gap-3">
                     {contactTypes.map((type) => {
@@ -160,8 +186,15 @@ const ContactSection = () => {
                   />
                 </div>
 
-                <Button type="submit" variant="hero" size="lg" className="w-full">
-                  Send Message
+                <Button type="submit" variant="hero" size="lg" className="w-full" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden />
+                      Sending…
+                    </>
+                  ) : (
+                    "Send message"
+                  )}
                 </Button>
               </form>
             </CardContent>
@@ -190,86 +223,65 @@ const ContactSection = () => {
                     </div>
                     <div>
                       <div className="font-medium text-foreground">Phone</div>
-                      <div className="text-muted-foreground">+91 6305517488</div>
+                      <div className="text-muted-foreground">+91 8019081414</div>
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-lg bg-care/20">
-                      <MapPin className="h-5 w-5 text-care" />
+                  <div className="flex items-start gap-4">
+                    <div className="p-3 rounded-lg bg-care/20 shrink-0">
+                      <MapPin className="h-5 w-5 text-care" aria-hidden />
                     </div>
-                    <div>
-                      <div className="font-medium text-foreground">Location</div>
-                      <div className="text-muted-foreground">Razole, India</div>
+                    <div className="min-w-0">
+                      <div className="font-medium text-foreground">Postal address</div>
+                      <a
+                        href={ORGANIZATION_MAPS_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group inline-flex flex-wrap items-baseline gap-x-1.5 gap-y-0.5 text-muted-foreground leading-relaxed text-pretty underline-offset-4 hover:text-foreground hover:underline"
+                        aria-label={`Open address in Google Maps: ${ORGANIZATION_ADDRESS}`}
+                      >
+                        <span>{ORGANIZATION_ADDRESS}</span>
+                        <ExternalLink
+                          className="inline h-3.5 w-3.5 shrink-0 translate-y-px opacity-70 group-hover:opacity-100"
+                          aria-hidden
+                        />
+                      </a>
                     </div>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Partnership Information */}
             <Card className="bg-gradient-care text-care-foreground shadow-card">
               <CardContent className="p-8">
-                <h3 className="text-xl font-bold mb-4">Partner with Us</h3>
+                <h3 className="text-xl font-bold mb-4">Ways to engage</h3>
                 <p className="mb-6 opacity-90">
-                  Join our open platform ecosystem and help us transform senior care in India. 
-                  We're looking for partners in:
+                  Pick the path that fits you — we read every message and respond as soon as we can.
                 </p>
-                
-                <div className="space-y-0.5">
-                  <div className="flex items-center gap-1">
-                    <div className="w-2 h-2 rounded-full bg-care-foreground/60" />
-                    <span className="text-sm">Wellness platforms</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <div className="w-2 h-2 rounded-full bg-care-foreground/60" />
-                    <span className="text-sm">Healthcare providers</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <div className="w-2 h-2 rounded-full bg-care-foreground/60" />
-                    <span className="text-sm">AgeTech companies</span>
-                  </div>
-                  
-                  {/* <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-care-foreground/60" />
-                    <span className="text-sm">Verified Customer Access</span>
-                  </div> */}
-                </div>
-                <h3 className="text-xl pt-4 font-bold mb-4">We are offering:</h3>
-                 <div className="space-y-1">
-                  <div className="flex items-center gap-1">
-                    <div className="w-2 h-2 rounded-full bg-care-foreground/60" />
-                    <span className="text-sm">API Integration</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <div className="w-2 h-2 rounded-full bg-care-foreground/60" />
-                    <span className="text-sm">MCP Support</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <div className="w-2 h-2 rounded-full bg-care-foreground/60" />
-                    <span className="text-sm">Service Embedding</span>
-                  </div>
-                  
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-care-foreground/60" />
-                    <span className="text-sm">Early Access to New Features</span>
-                  </div>
-                </div>
+                <ul className="space-y-2 text-sm">
+                  <li className="flex gap-2">
+                    <span className="text-care-foreground/80">→</span>
+                    <span>Try Aayu or ask about a senior in your life</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-care-foreground/80">→</span>
+                    <span>Bring Curiosity Coach to your school or district</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-care-foreground/80">→</span>
+                    <span>Join or host a Thinking Matters cohort</span>
+                  </li>
+                </ul>
               </CardContent>
             </Card>
 
-            {/* Call to Action */}
             <Card className="bg-gradient-hero shadow-card">
               <CardContent className="p-8 text-center">
-                <h3 className="text-xl font-bold text-foreground mb-4">
-                  Ready to Transform Senior Care?
-                </h3>
+                <h3 className="text-xl font-bold text-foreground mb-4">Prefer to explore first?</h3>
                 <p className="text-muted-foreground mb-6">
-                  Join us in creating a future where every senior lives their golden years with dignity and joy.
+                  Scroll up to read about our initiatives, philosophy, and team — then come back here
+                  when you&apos;re ready to talk.
                 </p>
-                <Button variant="hero" size="lg">
-                  Schedule a Demo
-                </Button>
               </CardContent>
             </Card>
           </div>

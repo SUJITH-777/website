@@ -1,12 +1,12 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
-import ProblemsSection from "@/components/ProblemsSection";
+import ProblemStatementSection from "@/components/ProblemStatementSection";
 import AboutSection from "@/components/AboutSection";
-import FeaturesSection from "@/components/FeaturesSection";
-import TechnologySection from "@/components/TechnologySection";
+import InitiativesSection from "@/components/InitiativesSection";
+import PhilosophySection from "@/components/PhilosophySection";
+import TeamSection from "@/components/TeamSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
-import ProblemStatementSection from "@/components/ProblemStatementSection";
 
 const Index = () => {
   return (
@@ -14,13 +14,10 @@ const Index = () => {
       <Header />
       <HeroSection />
       <ProblemStatementSection />
-      
-      {/* Uncomment the following line if you want to include the ProblemsSection */}
-      {/* <ProblemsSection /> */}
       <AboutSection />
-
-      <FeaturesSection />
-      {/* <TechnologySection /> */}
+      <InitiativesSection />
+      <PhilosophySection />
+      <TeamSection />
       <ContactSection />
       <Footer />
     </div>

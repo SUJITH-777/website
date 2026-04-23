@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 
+/** Semantic colours: #hex in theme.css; Tailwind uses rgb(from var(…) …) for opacity. */
 export default {
 	darkMode: ["class"],
 	content: [
@@ -19,58 +20,81 @@ export default {
 		},
 		extend: {
 			colors: {
-				border: 'hsl(var(--border))',
-				input: 'hsl(var(--input))',
-				ring: 'hsl(var(--ring))',
-				background: 'hsl(var(--background))',
-				foreground: 'hsl(var(--foreground))',
+				border: 'rgb(from var(--border) r g b / <alpha-value>)',
+				input: 'rgb(from var(--input) r g b / <alpha-value>)',
+				ring: 'rgb(from var(--ring) r g b / <alpha-value>)',
+				background: 'rgb(from var(--background) r g b / <alpha-value>)',
+				foreground: 'rgb(from var(--foreground) r g b / <alpha-value>)',
 				primary: {
-					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))',
-					soft: 'hsl(var(--primary-soft))'
+					DEFAULT: 'rgb(from var(--primary) r g b / <alpha-value>)',
+					foreground: 'rgb(from var(--primary-foreground) r g b / <alpha-value>)',
+					soft: 'rgb(from var(--primary-soft) r g b / <alpha-value>)',
 				},
 				secondary: {
-					DEFAULT: 'hsl(var(--secondary))',
-					foreground: 'hsl(var(--secondary-foreground))'
+					DEFAULT: 'rgb(from var(--secondary) r g b / <alpha-value>)',
+					foreground: 'rgb(from var(--secondary-foreground) r g b / <alpha-value>)',
 				},
 				destructive: {
-					DEFAULT: 'hsl(var(--destructive))',
-					foreground: 'hsl(var(--destructive-foreground))'
+					DEFAULT: 'rgb(from var(--destructive) r g b / <alpha-value>)',
+					foreground: 'rgb(from var(--destructive-foreground) r g b / <alpha-value>)',
 				},
 				muted: {
-					DEFAULT: 'hsl(var(--muted))',
-					foreground: 'hsl(var(--muted-foreground))'
+					DEFAULT: 'rgb(from var(--muted) r g b / <alpha-value>)',
+					foreground: 'rgb(from var(--muted-foreground) r g b / <alpha-value>)',
 				},
 				accent: {
-					DEFAULT: 'hsl(var(--accent))',
-					foreground: 'hsl(var(--accent-foreground))'
+					DEFAULT: 'rgb(from var(--accent) r g b / <alpha-value>)',
+					foreground: 'rgb(from var(--accent-foreground) r g b / <alpha-value>)',
 				},
 				popover: {
-					DEFAULT: 'hsl(var(--popover))',
-					foreground: 'hsl(var(--popover-foreground))'
+					DEFAULT: 'rgb(from var(--popover) r g b / <alpha-value>)',
+					foreground: 'rgb(from var(--popover-foreground) r g b / <alpha-value>)',
 				},
 				card: {
-					DEFAULT: 'hsl(var(--card))',
-					foreground: 'hsl(var(--card-foreground))'
+					DEFAULT: 'rgb(from var(--card) r g b / <alpha-value>)',
+					foreground: 'rgb(from var(--card-foreground) r g b / <alpha-value>)',
 				},
 				trust: {
-					DEFAULT: 'hsl(var(--trust))',
-					foreground: 'hsl(var(--trust-foreground))'
+					DEFAULT: 'rgb(from var(--trust) r g b / <alpha-value>)',
+					foreground: 'rgb(from var(--trust-foreground) r g b / <alpha-value>)',
 				},
 				care: {
-					DEFAULT: 'hsl(var(--care))',
-					foreground: 'hsl(var(--care-foreground))'
+					DEFAULT: 'rgb(from var(--care) r g b / <alpha-value>)',
+					foreground: 'rgb(from var(--care-foreground) r g b / <alpha-value>)',
 				},
 				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				}
+					DEFAULT: 'rgb(from var(--sidebar-background) r g b / <alpha-value>)',
+					foreground: 'rgb(from var(--sidebar-foreground) r g b / <alpha-value>)',
+					primary: 'rgb(from var(--sidebar-primary) r g b / <alpha-value>)',
+					'primary-foreground': 'rgb(from var(--sidebar-primary-foreground) r g b / <alpha-value>)',
+					accent: 'rgb(from var(--sidebar-accent) r g b / <alpha-value>)',
+					'accent-foreground': 'rgb(from var(--sidebar-accent-foreground) r g b / <alpha-value>)',
+					border: 'rgb(from var(--sidebar-border) r g b / <alpha-value>)',
+					ring: 'rgb(from var(--sidebar-ring) r g b / <alpha-value>)',
+				},
+				teal: {
+					primary:      'var(--hex-teal-primary)',
+					primaryDark:  'var(--hex-teal-primary-dark)',
+					primaryLight: 'var(--hex-teal-primary-light)',
+					primarySoft:  'var(--hex-teal-primary-soft)',
+					primaryFaint: 'var(--hex-teal-primary-faint)',
+				},
+				aayu: {
+					background:    'var(--hex-aayu-background)',
+					backgroundMid: 'var(--hex-aayu-background-mid)',
+					card:          'var(--hex-aayu-card)',
+					border:        'var(--hex-aayu-border)',
+					disabled:      'var(--hex-aayu-disabled)',
+					textPrimary:   'var(--hex-aayu-text-primary)',
+					textBody:      'var(--hex-aayu-text-body)',
+					textMuted:     'var(--hex-aayu-text-muted)',
+					textPlaceholder: 'var(--hex-aayu-text-placeholder)',
+					accentWarm:    'var(--hex-aayu-accent-warm)',
+					accentFaint:   'var(--hex-aayu-accent-faint)',
+					success:       'var(--hex-aayu-success)',
+					error:         'var(--hex-aayu-error)',
+					stop:          'var(--hex-aayu-stop)',
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
