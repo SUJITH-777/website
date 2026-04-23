@@ -103,7 +103,7 @@ const ContactSection = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-0.5 lg:gap-1 items-start">
-          <Card className="animate-slide-up rounded-sm border-border/80 shadow-none bg-background">
+          <Card className="animate-slide-up rounded-sm border-border/80 shadow-none bg-card">
             <CardContent className="p-8 md:p-10">
               <h3 className="font-serif text-xl md:text-2xl font-semibold text-foreground mb-6 tracking-tight">
                 Send us a message
@@ -125,8 +125,8 @@ const ContactSection = () => {
                           onClick={() => setFormData({ ...formData, type: type.value })}
                           className={`p-3 rounded-sm border text-left transition-colors ${
                             active
-                              ? "border-foreground bg-foreground text-background"
-                              : "border-border bg-card hover:border-foreground/25"
+                              ? "border-primary/60 bg-primary text-primary-foreground"
+                              : "border-white/15 bg-card hover:border-white/30"
                           }`}
                         >
                           <span className="mb-1 block">
@@ -135,7 +135,7 @@ const ContactSection = () => {
                             ) : (
                               IconComponent && (
                                 <IconComponent
-                                  className={`h-4 w-4 ${active ? "text-background" : "text-[color:var(--hero-kicker)]"}`}
+                                  className={`h-4 w-4 ${active ? "text-primary-foreground" : "text-[color:var(--hero-kicker)]"}`}
                                   aria-hidden
                                 />
                               )
@@ -162,7 +162,7 @@ const ContactSection = () => {
                       onChange={handleInputChange}
                       required
                       placeholder="Your full name"
-                      className="rounded-sm bg-background"
+                      className="rounded-sm bg-input"
                     />
                   </div>
                   <div>
@@ -177,7 +177,7 @@ const ContactSection = () => {
                       onChange={handleInputChange}
                       required
                       placeholder="your.email@example.com"
-                      className="rounded-sm bg-background"
+                      className="rounded-sm bg-input"
                     />
                   </div>
                 </div>
@@ -192,7 +192,7 @@ const ContactSection = () => {
                     value={formData.subject}
                     onChange={handleInputChange}
                     placeholder="What would you like to discuss?"
-                    className="rounded-sm bg-background"
+                    className="rounded-sm bg-input"
                   />
                 </div>
 
@@ -208,7 +208,7 @@ const ContactSection = () => {
                     required
                     placeholder="Tell us more about your needs or interests..."
                     rows={5}
-                    className="rounded-sm bg-background"
+                    className="rounded-sm bg-input"
                   />
                 </div>
 
@@ -227,7 +227,7 @@ const ContactSection = () => {
           </Card>
 
           <div className="space-y-0.5 animate-fade-in">
-            <Card className="rounded-sm border-border/80 shadow-none bg-background">
+            <Card className="rounded-sm border-border/80 shadow-none bg-card">
               <CardContent className="p-8 md:p-10">
                 <h3 className="font-serif text-lg font-semibold text-foreground mb-6 tracking-tight">
                   Get in touch
@@ -278,15 +278,15 @@ const ContactSection = () => {
               </CardContent>
             </Card>
 
-            <Card className="rounded-sm border-border/80 shadow-none bg-foreground text-background">
+            <Card className="brand-dark-band rounded-sm border border-white/10 shadow-none">
               <CardContent className="p-8 md:p-10">
                 <p className="text-[9px] font-semibold uppercase tracking-[0.28em] text-[color:var(--hero-kicker)] mb-4">
                   Ways to engage
                 </p>
-                <p className="text-sm text-background/65 mb-6 leading-relaxed">
+                <p className="text-sm text-foreground/65 mb-6 leading-relaxed">
                   Pick the path that fits you — we read every message and respond as soon as we can.
                 </p>
-                <ul className="space-y-2.5 text-sm text-background/80">
+                <ul className="space-y-2.5 text-sm text-foreground/80">
                   <li className="flex gap-2">
                     <span className="text-[color:var(--hero-kicker)] shrink-0">→</span>
                     <span>Try Aayu or ask about a senior in your life</span>

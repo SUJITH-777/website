@@ -2,172 +2,144 @@
  * =============================================================================
  * SWARN AAYU — THEME (all colours as #hex in this file)
  * =============================================================================
- *
- * FORMAT
- * ------
- * Every swatch is `#RRGGBB`. Tailwind semantic tokens use modern CSS:
- *   rgb(from var(--token-name) r g b / 50%)
- * so classes like `bg-primary/10` still work.
- *
- * NAMES = where it shows up (same as shadcn / Tailwind theme)
- * -------------------------------------------------------------
- * Edit `:root` for light mode, `.dark` for dark mode (only when
- * `<html class="dark">`). Footer uses `--footer-*` at the end of `:root`.
- *
- * HERO EXTRAS — `--hero-kicker`, `--hero-badge`, `--gradient-primary`
- *   Aligned with Brand Identity v4: gold accents, cream panels, editorial type (see Swarn Aayu Brand Identity.html).
+ * Brand Identity v2 — dark forest canvas, gold accent, teal secondary nods,
+ * editorial type (Cormorant + DM Sans + Space Grotesk). See Swarn Aayu Brand Identity v2.html.
  * =============================================================================
  */
 
 @layer base {
   :root {
-    /* Brand Identity v4 — white canvas, ink type, gold labels, cream panels */
-    --background: #ffffff;
-    --foreground: #12161c;
+    /* v2 cover / foundations — deep green-black canvas */
+    --background: #0a100c;
+    --foreground: #f2f0ea;
 
-    --card: #faf8f4;
-    --card-foreground: #12161c;
+    --card: #131b17;
+    --card-foreground: #f0eee8;
 
-    --popover: #ffffff;
-    --popover-foreground: #12161c;
+    --popover: #141c18;
+    --popover-foreground: #f0eee8;
 
-    /* Primary CTA = ink (brand .btn-p on light) */
-    --primary: #12161c;
-    --primary-foreground: #ffffff;
-    --primary-soft: #e6e8ea;
+    /* Primary CTA = gold (v2 .btn-primary) */
+    --primary: #c9a85e;
+    --primary-foreground: #0b100d;
+    --primary-soft: #3d3428;
 
-    --hero-kicker: #c9a84c;
-    --hero-badge: #f0ebe0;
+    --hero-kicker: #c9a85e;
+    --hero-badge: #1c261f;
 
-    --secondary: #faf8f4;
-    --secondary-foreground: #12161c;
+    --secondary: #17211c;
+    --secondary-foreground: #e8ebe6;
 
-    --muted: #faf8f4;
-    --muted-foreground: #6b7179;
+    --muted: #101814;
+    --muted-foreground: #909992;
 
-    --accent: #c9a84c;
-    --accent-foreground: #12161c;
+    /* Teal accent — Direction B (Gyan) */
+    --accent: #5eb0c4;
+    --accent-foreground: #0b100d;
 
-    --trust: #4a5058;
-    --trust-foreground: #ffffff;
+    --trust: #7d8f87;
+    --trust-foreground: #0b100d;
 
-    --care: #c9a84c;
-    --care-foreground: #12161c;
+    /* Warm ember — Direction C hint */
+    --care: #d4a458;
+    --care-foreground: #0b100d;
 
-    --destructive: #c0392b;
+    --destructive: #c94c54;
     --destructive-foreground: #ffffff;
 
-    --border: #e8eaec;
-    --input: #faf8f4;
-    --ring: #c9a84c;
+    --border: #26332d;
+    --input: #141c17;
+    --ring: #c9a85e;
 
-    /* Brand chips / cards — ~4px */
-    --radius: 0.25rem;
+    --radius: 0.125rem;
 
-    --gradient-primary: linear-gradient(135deg, #f0ebe0 0%, #c9a84c 55%, #a88a3d 100%);
-    --gradient-hero: #ffffff;
-    --gradient-care: linear-gradient(135deg, #12161c 0%, #1c2430 100%);
+    --gradient-primary: linear-gradient(135deg, #c9a85e 0%, #a88a45 100%);
+    --gradient-hero: #0a100c;
+    --gradient-care: linear-gradient(135deg, #1a221e 0%, #0f1512 100%);
 
-    --shadow-soft: 0 4px 24px -6px color-mix(in srgb, var(--foreground) 6%, transparent);
-    --shadow-card: 0 8px 40px -12px color-mix(in srgb, var(--foreground) 8%, transparent);
-    --shadow-hero: 0 12px 48px -16px color-mix(in srgb, var(--foreground) 10%, transparent);
+    --shadow-soft: 0 4px 32px -8px color-mix(in srgb, #000000 45%, transparent);
+    --shadow-card: 0 12px 48px -16px color-mix(in srgb, #000000 55%, transparent);
+    --shadow-hero: 0 24px 64px -20px color-mix(in srgb, #000000 50%, transparent);
 
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    --sidebar-background: #faf8f4;
-    --sidebar-foreground: #12161c;
-    --sidebar-primary: #12161c;
-    --sidebar-primary-foreground: #ffffff;
-    --sidebar-accent: #f0ebe0;
-    --sidebar-accent-foreground: #12161c;
-    --sidebar-border: #e8eaec;
-    --sidebar-ring: #c9a84c;
+    --sidebar-background: #0e1411;
+    --sidebar-foreground: #f0eee8;
+    --sidebar-primary: #c9a85e;
+    --sidebar-primary-foreground: #0b100d;
+    --sidebar-accent: #17211c;
+    --sidebar-accent-foreground: #f0eee8;
+    --sidebar-border: #26332d;
+    --sidebar-ring: #c9a85e;
 
-    --hex-teal-primary: #12161c;
-    --hex-teal-primary-dark: #0d1014;
-    --hex-teal-primary-light: #4a5058;
-    --hex-teal-primary-soft: #e6e8ea;
-    --hex-teal-primary-faint: #f5f5f3;
+    --hex-teal-primary: #5eb0c4;
+    --hex-teal-primary-dark: #3d8a9e;
+    --hex-teal-primary-light: #7ec8d4;
+    --hex-teal-primary-soft: #2a3d38;
+    --hex-teal-primary-faint: #1a2622;
 
-    --hex-aayu-background: #ffffff;
-    --hex-aayu-background-mid: #faf8f4;
-    --hex-aayu-card: #faf8f4;
-    --hex-aayu-border: #e8eaec;
-    --hex-aayu-disabled: #c5c9ce;
-    --hex-aayu-text-primary: #12161c;
-    --hex-aayu-text-body: #2a3038;
-    --hex-aayu-text-muted: #6b7179;
-    --hex-aayu-text-placeholder: #9aa0a8;
-    --hex-aayu-accent-warm: #c9a84c;
-    --hex-aayu-accent-faint: #f5f0e4;
-    --hex-aayu-success: #2a9d42;
-    --hex-aayu-error: #c0392b;
-    --hex-aayu-stop: #e05a4e;
+    --hex-aayu-background: #0a100c;
+    --hex-aayu-background-mid: #101814;
+    --hex-aayu-card: #131b17;
+    --hex-aayu-border: #26332d;
+    --hex-aayu-disabled: #4a5550;
+    --hex-aayu-text-primary: #f2f0ea;
+    --hex-aayu-text-body: #c5cbc4;
+    --hex-aayu-text-muted: #909992;
+    --hex-aayu-text-placeholder: #5a6560;
+    --hex-aayu-accent-warm: #d4a458;
+    --hex-aayu-accent-faint: #2a2418;
+    --hex-aayu-success: #5cb88a;
+    --hex-aayu-error: #c94c54;
+    --hex-aayu-stop: #e07060;
 
-    /* Footer — brand ink strip (Brand Identity footer) */
-    --footer-bg: #12161c;
-    /* Main text colour on footer */
-    --footer-fg: #d8ded8;
-    /* Muted footer copy — derived (footer .footer-muted) */
-    --footer-fg-subtle: color-mix(in srgb, var(--footer-fg) 72%, var(--footer-bg));
-    /* Legal line / quiet text (footer .footer-faint) */
-    --footer-fg-faint: color-mix(in srgb, var(--footer-fg) 55%, var(--footer-bg));
-    /* Divider lines between footer blocks (.footer-rule) */
-    --footer-edge: color-mix(in srgb, var(--footer-fg) 22%, transparent);
-    /* App store chip border */
-    --footer-chip-border: color-mix(in srgb, var(--footer-fg) 35%, transparent);
-    /* App store chip fill */
-    --footer-chip-bg: color-mix(in srgb, var(--footer-fg) 8%, var(--footer-bg));
+    /* v2 .foot */
+    --footer-bg: #060806;
+    --footer-fg: #e8ebe6;
+    --footer-fg-subtle: color-mix(in srgb, var(--footer-fg) 68%, var(--footer-bg));
+    --footer-fg-faint: color-mix(in srgb, var(--footer-fg) 48%, var(--footer-bg));
+    --footer-edge: color-mix(in srgb, var(--footer-fg) 18%, transparent);
+    --footer-chip-border: color-mix(in srgb, var(--footer-fg) 28%, transparent);
+    --footer-chip-bg: color-mix(in srgb, var(--footer-fg) 6%, var(--footer-bg));
   }
 
+  /* Optional html.dark — same system for consistency */
   .dark {
-    --background: #12161c;
+    --background: #0a100c;
     --foreground: #f2f0ea;
-
-    --card: #1a1f26;
-    --card-foreground: #f2f0ea;
-
-    --popover: #1a1f26;
-    --popover-foreground: #f2f0ea;
-
-    --primary: #f2f0ea;
-    --primary-foreground: #12161c;
-    --primary-soft: #2a3038;
-
-    --secondary: #1a1f26;
-    --secondary-foreground: #f2f0ea;
-
-    --muted: #1a1f26;
-    --muted-foreground: #9aa0a8;
-
-    --accent: #d8cc7a;
-    --accent-foreground: #12161c;
-
-    --trust: #9aa0a8;
-    --trust-foreground: #12161c;
-
-    --care: #d8cc7a;
-    --care-foreground: #12161c;
-
-    --destructive: #c0392b;
+    --card: #131b17;
+    --card-foreground: #f0eee8;
+    --popover: #141c18;
+    --popover-foreground: #f0eee8;
+    --primary: #c9a85e;
+    --primary-foreground: #0b100d;
+    --primary-soft: #3d3428;
+    --secondary: #17211c;
+    --secondary-foreground: #e8ebe6;
+    --muted: #101814;
+    --muted-foreground: #909992;
+    --accent: #5eb0c4;
+    --accent-foreground: #0b100d;
+    --trust: #7d8f87;
+    --trust-foreground: #0b100d;
+    --care: #d4a458;
+    --care-foreground: #0b100d;
+    --destructive: #c94c54;
     --destructive-foreground: #ffffff;
-
-    --border: #2a3038;
-    --input: #1a1f26;
-    --ring: #d8cc7a;
-
-    --sidebar-background: #12161c;
-    --sidebar-foreground: #f2f0ea;
-    --sidebar-primary: #f2f0ea;
-    --sidebar-primary-foreground: #12161c;
-    --sidebar-accent: #1a1f26;
-    --sidebar-accent-foreground: #f2f0ea;
-    --sidebar-border: #2a3038;
-    --sidebar-ring: #d8cc7a;
-
-    --hero-kicker: #d8cc7a;
-    --hero-badge: #2a3038;
+    --border: #26332d;
+    --input: #141c17;
+    --ring: #c9a85e;
+    --sidebar-background: #0e1411;
+    --sidebar-foreground: #f0eee8;
+    --sidebar-primary: #c9a85e;
+    --sidebar-primary-foreground: #0b100d;
+    --sidebar-accent: #17211c;
+    --sidebar-accent-foreground: #f0eee8;
+    --sidebar-border: #26332d;
+    --sidebar-ring: #c9a85e;
+    --hero-kicker: #c9a85e;
+    --hero-badge: #1c261f;
   }
 }
 

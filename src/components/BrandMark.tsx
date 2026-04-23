@@ -59,6 +59,67 @@ export function HybridMark({
   );
 }
 
+/** Brand Identity v2 — trinity / orbit mark (currentColor). */
+export function TrinityMarkV2({
+  className,
+  size = 22,
+  ...props
+}: SVGProps<SVGSVGElement> & { size?: number }) {
+  return (
+    <svg
+      className={className}
+      width={size}
+      height={size}
+      viewBox="0 0 80 80"
+      fill="none"
+      aria-hidden
+      {...props}
+    >
+      <path
+        d="M 40 6 A 34 34 0 1 0 72 48"
+        stroke="currentColor"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+      <line
+        x1="40"
+        y1="40"
+        x2="40"
+        y2="14"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        opacity="0.6"
+        strokeLinecap="round"
+      />
+      <line
+        x1="40"
+        y1="40"
+        x2="17"
+        y2="55"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        opacity="0.6"
+        strokeLinecap="round"
+      />
+      <line
+        x1="40"
+        y1="40"
+        x2="63"
+        y2="55"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        opacity="0.6"
+        strokeLinecap="round"
+      />
+      <circle cx="40" cy="14" r="3" fill="currentColor" opacity="0.6" />
+      <circle cx="17" cy="55" r="3" fill="currentColor" opacity="0.6" />
+      <circle cx="63" cy="55" r="3" fill="currentColor" opacity="0.6" />
+      <circle cx="40" cy="40" r="2.5" fill="currentColor" />
+      <circle cx="72" cy="48" r="5" fill="currentColor" />
+    </svg>
+  );
+}
+
 /** Aayu care lockup — white heart outline on gold rounded square (brand asset). */
 export function GoldHeartSquircle({
   size = 36,

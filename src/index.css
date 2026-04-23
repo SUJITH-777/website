@@ -68,12 +68,15 @@
     @apply bg-background border border-border/0;
   }
 
+  /* v2 ink band on dark canvas (not shadcn bg-foreground — that token is light text colour) */
   .brand-dark-band {
-    @apply bg-foreground text-background;
+    background-color: #0b100d;
+    color: #f2f0ea;
   }
 
   .brand-dark-band .brand-body {
-    @apply text-background/60 max-w-none;
+    @apply max-w-none;
+    color: color-mix(in srgb, #f2f0ea 65%, #0b100d);
   }
 
   .brand-dark-band .brand-label {

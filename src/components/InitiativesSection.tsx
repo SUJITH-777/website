@@ -12,7 +12,7 @@ import {
   Brain,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { GoldHeartSquircle, HybridMark } from "@/components/BrandMark";
+import { GoldHeartSquircle, TrinityMarkV2 } from "@/components/BrandMark";
 import { PLAY_STORE_URL } from "@/constants/app-links";
 
 const scrollTo = (id: string) => {
@@ -147,7 +147,7 @@ const InitiativesSection = () => {
               aria-label="Visual representing Aayu for seniors, Curiosity Coach for children, and Thinking Matters for lifelong learners"
             >
               <div className="flex items-center gap-2 text-[9px] font-semibold uppercase tracking-[0.28em] text-[color:var(--hero-kicker)]">
-                <HybridMark className="shrink-0" size={20} aria-hidden />
+                <TrinityMarkV2 className="shrink-0" size={20} aria-hidden />
                 One foundation, three paths
               </div>
               <div className="grid w-full max-w-sm grid-cols-3 gap-0.5 text-center">
@@ -174,7 +174,7 @@ const InitiativesSection = () => {
                 Warm, human-centred AI — built for agency across every stage of life.
               </p>
               <div className="absolute -top-3 -right-3 rounded-sm border border-border bg-card p-2 shadow-card text-[color:var(--hero-kicker)]">
-                <HybridMark size={22} aria-hidden />
+                <TrinityMarkV2 size={22} aria-hidden />
               </div>
             </div>
           </div>
