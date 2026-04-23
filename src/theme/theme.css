@@ -15,127 +15,98 @@
  * `<html class="dark">`). Footer uses `--footer-*` at the end of `:root`.
  *
  * HERO EXTRAS — `--hero-kicker`, `--hero-badge`, `--gradient-primary`
- *   Kicker line, sparkles, lightbulb icon, CTA gradient (yellow → mint).
+ *   Aligned with Brand Identity v4: gold accents, cream panels, editorial type (see Swarn Aayu Brand Identity.html).
  * =============================================================================
  */
 
 @layer base {
   :root {
-    /* Page background — body, main canvas, header backdrop (bg-background) — soft sage */
-    --background: #f0faf7;
-    /* Default text — headings, paragraphs (text-foreground) */
-    --foreground: #1a3c39;
+    /* Brand Identity v4 — white canvas, ink type, gold labels, cream panels */
+    --background: #ffffff;
+    --foreground: #12161c;
 
-    /* Card panels — shadcn Card, many section cards (bg-card) */
-    --card: #fafefe;
-    /* Text on top of card surfaces (text-card-foreground) */
-    --card-foreground: #1a3c39;
+    --card: #faf8f4;
+    --card-foreground: #12161c;
 
-    /* Dropdowns, popovers, menus (bg-popover) */
-    --popover: #fafefe;
-    /* Text inside popovers (text-popover-foreground) */
-    --popover-foreground: #1a3c39;
+    --popover: #ffffff;
+    --popover-foreground: #12161c;
 
-    /* Main brand teal — rings, solid primary buttons, default primary UI (bg-primary, text-primary) */
-    --primary: #2e8a80;
-    /* Text on solid primary fills (default variant buttons, not hero gradient) */
+    /* Primary CTA = ink (brand .btn-p on light) */
+    --primary: #12161c;
     --primary-foreground: #ffffff;
-    /* Softer teal tint — soft fills (text-primary-soft, bg-primary/10) */
-    --primary-soft: #a8d8d4;
+    --primary-soft: #e6e8ea;
 
-    /* Hero “gold” accents — eyebrow, sparkles, lightbulb (readable on sage; HeroSection + Header logo ok) */
-    --hero-kicker: #9a8630;
-    /* “Agency-first AI” floating pill background (pale butter) */
-    --hero-badge: #efe4b0;
+    --hero-kicker: #c9a84c;
+    --hero-badge: #f0ebe0;
 
-    /* Secondary bands, subtle fills (bg-secondary) */
-    --secondary: #dcf0ed;
-    /* Text on secondary surfaces (text-secondary-foreground) */
-    --secondary-foreground: #1a3c39;
+    --secondary: #faf8f4;
+    --secondary-foreground: #12161c;
 
-    /* Muted section backgrounds (bg-muted, bg-muted/30) */
-    --muted: #eef8f6;
-    /* Captions, helper, meta text (text-muted-foreground) */
-    --muted-foreground: #6b8a87;
+    --muted: #faf8f4;
+    --muted-foreground: #6b7179;
 
-    /* Warm accent — terracotta highlights, gradient end (bg-accent) */
-    --accent: #e8a87c;
-    /* Text on accent fills (text-accent-foreground) */
-    --accent-foreground: #1a3c39;
+    --accent: #c9a84c;
+    --accent-foreground: #12161c;
 
-    /* “Trust” rail — deep teal icons/badges (bg-trust, text-trust) */
-    --trust: #1b6b63;
-    /* Text on trust-coloured buttons (text-trust-foreground) */
+    --trust: #4a5058;
     --trust-foreground: #ffffff;
 
-    /* “Care” rail — mid teal (bg-care, text-care) */
-    --care: #47a89e;
-    /* Text on care-coloured buttons (text-care-foreground) */
-    --care-foreground: #ffffff;
+    --care: #c9a84c;
+    --care-foreground: #12161c;
 
-    /* Errors, destructive buttons (bg-destructive) */
     --destructive: #c0392b;
-    /* Text on destructive buttons (text-destructive-foreground) */
     --destructive-foreground: #ffffff;
 
-    /* Default borders, dividers (border-border) */
-    --border: #dcf0ed;
-    /* Input field borders / fills tied to input token (border-input) */
-    --input: #eef8f6;
-    /* Focus ring around buttons, inputs, links (ring-ring) */
-    --ring: #2e8a80;
+    --border: #e8eaec;
+    --input: #faf8f4;
+    --ring: #c9a84c;
 
-    --radius: 0.75rem;
+    /* Brand chips / cards — ~4px */
+    --radius: 0.25rem;
 
-    /* CTA gradient — “Get involved”, hero primary buttons, logo tile (butter → mint → teal) */
-    --gradient-primary: linear-gradient(135deg, #f2e6a0 0%, #d4c46a 28%, #5cbfb0 72%, #2e8a80 100%);
-    /* Hero section wash — near-white into cool mint (bg-gradient-hero) */
-    --gradient-hero: linear-gradient(165deg, #fefffe 0%, #f2faf7 38%, #e3f2ed 100%);
-    --gradient-care: linear-gradient(135deg, var(--care), var(--accent));
+    --gradient-primary: linear-gradient(135deg, #f0ebe0 0%, #c9a84c 55%, #a88a3d 100%);
+    --gradient-hero: #ffffff;
+    --gradient-care: linear-gradient(135deg, #12161c 0%, #1c2430 100%);
 
-    /* Elevation shadows (shadow-soft, shadow-card, shadow-hero) — tinted from --primary */
-    --shadow-soft: 0 4px 20px -4px color-mix(in srgb, var(--primary) 12%, transparent);
-    --shadow-card: 0 8px 30px -8px color-mix(in srgb, var(--primary) 18%, transparent);
-    --shadow-hero: 0 20px 60px -20px color-mix(in srgb, var(--primary) 25%, transparent);
+    --shadow-soft: 0 4px 24px -6px color-mix(in srgb, var(--foreground) 6%, transparent);
+    --shadow-card: 0 8px 40px -12px color-mix(in srgb, var(--foreground) 8%, transparent);
+    --shadow-hero: 0 12px 48px -16px color-mix(in srgb, var(--foreground) 10%, transparent);
 
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    /* Sidebar shell — only if you use sidebar layout (bg-sidebar, text-sidebar-foreground, …) */
-    --sidebar-background: #eef8f6;
-    --sidebar-foreground: #1a3c39;
-    --sidebar-primary: #2e8a80;
+    --sidebar-background: #faf8f4;
+    --sidebar-foreground: #12161c;
+    --sidebar-primary: #12161c;
     --sidebar-primary-foreground: #ffffff;
-    --sidebar-accent: #dcf0ed;
-    --sidebar-accent-foreground: #1a3c39;
-    --sidebar-border: #dcf0ed;
-    --sidebar-ring: #2e8a80;
+    --sidebar-accent: #f0ebe0;
+    --sidebar-accent-foreground: #12161c;
+    --sidebar-border: #e8eaec;
+    --sidebar-ring: #c9a84c;
 
-    /* Tailwind utilities `teal.*` — product teal scale (use bg-teal-primary, text-teal-primaryDark, …) */
-    --hex-teal-primary: #2e8a80;
-    --hex-teal-primary-dark: #1b6b63;
-    --hex-teal-primary-light: #47a89e;
-    --hex-teal-primary-soft: #a8d8d4;
-    --hex-teal-primary-faint: #dcf0ed;
+    --hex-teal-primary: #12161c;
+    --hex-teal-primary-dark: #0d1014;
+    --hex-teal-primary-light: #4a5058;
+    --hex-teal-primary-soft: #e6e8ea;
+    --hex-teal-primary-faint: #f5f5f3;
 
-    /* Tailwind utilities `aayu.*` — Aayu-style product UI (bg-aayu-background, text-aayu-textMuted, …) */
-    --hex-aayu-background: #f0faf7;
-    --hex-aayu-background-mid: #dcf0ed;
-    --hex-aayu-card: #fafefe;
-    --hex-aayu-border: #dcf0ed;
-    --hex-aayu-disabled: #b8d8d4;
-    --hex-aayu-text-primary: #1a3c39;
-    --hex-aayu-text-body: #2c3e3c;
-    --hex-aayu-text-muted: #6b8a87;
-    --hex-aayu-text-placeholder: #7ec8c2;
-    --hex-aayu-accent-warm: #e8a87c;
-    --hex-aayu-accent-faint: #fef0e6;
+    --hex-aayu-background: #ffffff;
+    --hex-aayu-background-mid: #faf8f4;
+    --hex-aayu-card: #faf8f4;
+    --hex-aayu-border: #e8eaec;
+    --hex-aayu-disabled: #c5c9ce;
+    --hex-aayu-text-primary: #12161c;
+    --hex-aayu-text-body: #2a3038;
+    --hex-aayu-text-muted: #6b7179;
+    --hex-aayu-text-placeholder: #9aa0a8;
+    --hex-aayu-accent-warm: #c9a84c;
+    --hex-aayu-accent-faint: #f5f0e4;
     --hex-aayu-success: #2a9d42;
     --hex-aayu-error: #c0392b;
     --hex-aayu-stop: #e05a4e;
 
-    /* Footer only — dark strip at bottom (Footer.tsx `.site-footer`; not the same as page --background) */
-    --footer-bg: #1b302c;
+    /* Footer — brand ink strip (Brand Identity footer) */
+    --footer-bg: #12161c;
     /* Main text colour on footer */
     --footer-fg: #d8ded8;
     /* Muted footer copy — derived (footer .footer-muted) */
@@ -151,65 +122,52 @@
   }
 
   .dark {
-    /* Dark page canvas (bg-background) */
-    --background: #1a3c39;
-    /* Body / default text on dark (text-foreground) */
-    --foreground: #dcf0ed;
+    --background: #12161c;
+    --foreground: #f2f0ea;
 
-    /* Card / raised surfaces on dark (bg-card) */
-    --card: #1d4945;
-    --card-foreground: #dcf0ed;
+    --card: #1a1f26;
+    --card-foreground: #f2f0ea;
 
-    /* Popovers on dark (bg-popover) */
-    --popover: #1d4945;
-    --popover-foreground: #dcf0ed;
+    --popover: #1a1f26;
+    --popover-foreground: #f2f0ea;
 
-    /* Primary actions on dark — lighter teal for contrast (bg-primary) */
-    --primary: #47a89e;
-    --primary-foreground: #1a3c39;
-    --primary-soft: #7ec8c2;
+    --primary: #f2f0ea;
+    --primary-foreground: #12161c;
+    --primary-soft: #2a3038;
 
-    /* Secondary panels on dark (bg-secondary) */
-    --secondary: #1b6b63;
-    --secondary-foreground: #dcf0ed;
+    --secondary: #1a1f26;
+    --secondary-foreground: #f2f0ea;
 
-    /* Muted blocks + helper text on dark */
-    --muted: #2c3f3d;
-    --muted-foreground: #7ec8c2;
+    --muted: #1a1f26;
+    --muted-foreground: #9aa0a8;
 
-    /* Accent unchanged — warm highlight on dark */
-    --accent: #e8a87c;
-    --accent-foreground: #1a3c39;
+    --accent: #d8cc7a;
+    --accent-foreground: #12161c;
 
-    /* Trust / care rails on dark */
-    --trust: #47a89e;
-    --trust-foreground: #1a3c39;
+    --trust: #9aa0a8;
+    --trust-foreground: #12161c;
 
-    --care: #a8d8d4;
-    --care-foreground: #1a3c39;
+    --care: #d8cc7a;
+    --care-foreground: #12161c;
 
-    /* Destructive on dark */
     --destructive: #c0392b;
     --destructive-foreground: #ffffff;
 
-    /* Borders, inputs, focus ring on dark */
-    --border: #2c3f3d;
-    --input: #2c3f3d;
-    --ring: #7ec8c2;
+    --border: #2a3038;
+    --input: #1a1f26;
+    --ring: #d8cc7a;
 
-    /* Sidebar tokens on dark (same roles as light) */
-    --sidebar-background: #1a3c39;
-    --sidebar-foreground: #dcf0ed;
-    --sidebar-primary: #47a89e;
-    --sidebar-primary-foreground: #1a3c39;
-    --sidebar-accent: #2c3f3d;
-    --sidebar-accent-foreground: #dcf0ed;
-    --sidebar-border: #2c3f3d;
-    --sidebar-ring: #7ec8c2;
+    --sidebar-background: #12161c;
+    --sidebar-foreground: #f2f0ea;
+    --sidebar-primary: #f2f0ea;
+    --sidebar-primary-foreground: #12161c;
+    --sidebar-accent: #1a1f26;
+    --sidebar-accent-foreground: #f2f0ea;
+    --sidebar-border: #2a3038;
+    --sidebar-ring: #d8cc7a;
 
-    /* Hero accents on dark canvas */
     --hero-kicker: #d8cc7a;
-    --hero-badge: #2f4a45;
+    --hero-badge: #2a3038;
   }
 }
 

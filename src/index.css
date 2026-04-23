@@ -10,7 +10,77 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-weight: 400;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-serif tracking-tight;
+  }
+}
+
+/* Swarn Aayu Brand Identity — editorial primitives (see Swarn Aayu Brand Identity.html) */
+@layer components {
+  .brand-page {
+    @apply max-w-brand mx-auto px-6 md:px-12;
+  }
+
+  .brand-section {
+    @apply py-20 md:py-24 border-b border-border;
+  }
+
+  .brand-label {
+    @apply block text-[9px] font-semibold uppercase tracking-[0.34em] text-[color:var(--hero-kicker)] mb-3.5;
+  }
+
+  .brand-heading {
+    @apply font-serif font-semibold text-foreground tracking-tight mb-4;
+    font-size: clamp(1.875rem, 4vw, 3.25rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+
+  .brand-heading em {
+    font-style: italic;
+    color: var(--hero-kicker);
+  }
+
+  .brand-body {
+    @apply text-sm text-muted-foreground max-w-[32.5rem] leading-[1.82];
+  }
+
+  .brand-strip {
+    @apply bg-card;
+  }
+
+  .brand-grid {
+    @apply grid gap-0.5;
+  }
+
+  .brand-cell {
+    @apply bg-background border border-border/0;
+  }
+
+  .brand-dark-band {
+    @apply bg-foreground text-background;
+  }
+
+  .brand-dark-band .brand-body {
+    @apply text-background/60 max-w-none;
+  }
+
+  .brand-dark-band .brand-label {
+    @apply text-[color:var(--hero-kicker)];
+  }
+
+  .brand-btn-p {
+    @apply text-[10px] font-semibold uppercase tracking-[0.18em] px-6 py-2.5 h-auto min-h-0 rounded-sm;
   }
 }

@@ -7,7 +7,9 @@ import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { ORGANIZATION_ADDRESS, ORGANIZATION_MAPS_URL } from "@/constants/contact";
 import { CONTACT_FORM_URL } from "@/config/contact-api";
-import { Mail, Phone, MapPin, Users, Building, Heart, ExternalLink, Loader2 } from "lucide-react";
+import { Mail, Phone, MapPin, Users, Building, ExternalLink, Loader2 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { GoldHeartSquircle } from "@/components/BrandMark";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -56,72 +58,92 @@ const ContactSection = () => {
       toast({
         variant: "destructive",
         title: "Message not sent",
-        description: "Network error. Check your connection, or email contact@swarnaayu.com directly.",
+        description:
+          "Network error. Check your connection, or email contact@swarnaayu.com directly.",
       });
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
-  const contactTypes = [
+  const contactTypes: {
+    value: string;
+    label: string;
+    icon: LucideIcon | "goldHeart";
+  }[] = [
     { value: "general", label: "General", icon: Mail },
-    { value: "seniors_families", label: "Seniors & families", icon: Heart },
+    { value: "seniors_families", label: "Seniors & families", icon: "goldHeart" },
     { value: "schools", label: "Schools & educators", icon: Building },
     { value: "thinkers", label: "Thinkers & learners", icon: Users },
   ];
 
   return (
-    <section id="contact" className="scroll-mt-24 py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-16 animate-fade-in">
-          <Badge variant="secondary" className="mb-4">
+    <section id="contact" className="scroll-mt-24 brand-section bg-background">
+      <div className="brand-page">
+        <div className="mb-14 md:mb-16 animate-fade-in">
+          <Badge variant="brand" className="mb-5">
             Get involved
           </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-            <span className="bg-gradient-primary bg-clip-text text-transparent">Contact us</span>
+          <h2 className="brand-heading max-w-3xl">
+            <em>Contact</em> us
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="brand-body max-w-3xl mt-4 text-[15px]">
             Reach out about Aayu, Curiosity Coach for your school, Thinking Matters cohorts, or
             anything else you&apos;d like to explore with the foundation.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
-          {/* Contact Form */}
-          <Card className="animate-slide-up shadow-card">
-            <CardContent className="p-8">
-              <h3 className="text-2xl font-bold text-foreground mb-6">Send us a message</h3>
-              
+        <div className="grid lg:grid-cols-2 gap-0.5 lg:gap-1 items-start">
+          <Card className="animate-slide-up rounded-sm border-border/80 shadow-none bg-background">
+            <CardContent className="p-8 md:p-10">
+              <h3 className="font-serif text-xl md:text-2xl font-semibold text-foreground mb-6 tracking-tight">
+                Send us a message
+              </h3>
+
               <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Contact Type Selection */}
                 <div>
-                  <label className="text-sm font-medium text-foreground mb-3 block">
-                    I&apos;m reaching out as:
+                  <label className="text-[9px] font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-3 block">
+                    I&apos;m reaching out as
                   </label>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-2 gap-0.5">
                     {contactTypes.map((type) => {
-                      const IconComponent = type.icon;
+                      const active = formData.type === type.value;
+                      const IconComponent = type.icon === "goldHeart" ? null : type.icon;
                       return (
                         <button
                           key={type.value}
                           type="button"
                           onClick={() => setFormData({ ...formData, type: type.value })}
-                          className={`p-3 rounded-lg border transition-all duration-200 ${
-                            formData.type === type.value
-                              ? 'border-primary bg-primary/10 text-primary'
-                              : 'border-border hover:border-primary/50'
+                          className={`p-3 rounded-sm border text-left transition-colors ${
+                            active
+                              ? "border-foreground bg-foreground text-background"
+                              : "border-border bg-card hover:border-foreground/25"
                           }`}
                         >
-                          <IconComponent className="h-5 w-5 mx-auto mb-1" />
-                          <span className="text-xs font-medium">{type.label}</span>
+                          <span className="mb-1 block">
+                            {type.icon === "goldHeart" ? (
+                              <GoldHeartSquircle size={32} className={active ? "opacity-95" : ""} />
+                            ) : (
+                              IconComponent && (
+                                <IconComponent
+                                  className={`h-4 w-4 ${active ? "text-background" : "text-[color:var(--hero-kicker)]"}`}
+                                  aria-hidden
+                                />
+                              )
+                            )}
+                          </span>
+                          <span className="text-[10px] font-medium uppercase tracking-wide block">
+                            {type.label}
+                          </span>
                         </button>
                       );
                     })}
@@ -130,8 +152,8 @@ const ContactSection = () => {
 
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="name" className="text-sm font-medium text-foreground mb-2 block">
-                      Full Name *
+                    <label htmlFor="name" className="text-[9px] font-semibold uppercase tracking-[0.18em] text-muted-foreground mb-2 block">
+                      Full name *
                     </label>
                     <Input
                       id="name"
@@ -140,11 +162,12 @@ const ContactSection = () => {
                       onChange={handleInputChange}
                       required
                       placeholder="Your full name"
+                      className="rounded-sm bg-background"
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="text-sm font-medium text-foreground mb-2 block">
-                      Email Address *
+                    <label htmlFor="email" className="text-[9px] font-semibold uppercase tracking-[0.18em] text-muted-foreground mb-2 block">
+                      Email *
                     </label>
                     <Input
                       id="email"
@@ -154,12 +177,13 @@ const ContactSection = () => {
                       onChange={handleInputChange}
                       required
                       placeholder="your.email@example.com"
+                      className="rounded-sm bg-background"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="text-sm font-medium text-foreground mb-2 block">
+                  <label htmlFor="subject" className="text-[9px] font-semibold uppercase tracking-[0.18em] text-muted-foreground mb-2 block">
                     Subject
                   </label>
                   <Input
@@ -168,11 +192,12 @@ const ContactSection = () => {
                     value={formData.subject}
                     onChange={handleInputChange}
                     placeholder="What would you like to discuss?"
+                    className="rounded-sm bg-background"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="text-sm font-medium text-foreground mb-2 block">
+                  <label htmlFor="message" className="text-[9px] font-semibold uppercase tracking-[0.18em] text-muted-foreground mb-2 block">
                     Message *
                   </label>
                   <Textarea
@@ -183,10 +208,11 @@ const ContactSection = () => {
                     required
                     placeholder="Tell us more about your needs or interests..."
                     rows={5}
+                    className="rounded-sm bg-background"
                   />
                 </div>
 
-                <Button type="submit" variant="hero" size="lg" className="w-full" disabled={isSubmitting}>
+                <Button type="submit" variant="hero" size="lg" className="w-full brand-btn-p" disabled={isSubmitting}>
                   {isSubmitting ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden />
@@ -200,39 +226,39 @@ const ContactSection = () => {
             </CardContent>
           </Card>
 
-          {/* Contact Info & Partnership */}
-          <div className="space-y-8 animate-fade-in">
-            {/* Contact Information */}
-            <Card className="shadow-card">
-              <CardContent className="p-8">
-                <h3 className="text-xl font-bold text-foreground mb-6">Get in Touch</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-lg bg-primary/10">
-                      <Mail className="h-5 w-5 text-primary" />
-                    </div>
+          <div className="space-y-0.5 animate-fade-in">
+            <Card className="rounded-sm border-border/80 shadow-none bg-background">
+              <CardContent className="p-8 md:p-10">
+                <h3 className="font-serif text-lg font-semibold text-foreground mb-6 tracking-tight">
+                  Get in touch
+                </h3>
+                <div className="space-y-5 text-sm">
+                  <div className="flex items-start gap-3">
+                    <Mail className="h-4 w-4 mt-0.5 shrink-0 text-[color:var(--hero-kicker)]" aria-hidden />
                     <div>
-                      <div className="font-medium text-foreground">Email</div>
-                      <div className="text-muted-foreground">contact@swarnaayu.com</div>
+                      <div className="text-[9px] font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-0.5">
+                        Email
+                      </div>
+                      <div className="text-foreground">contact@swarnaayu.com</div>
                     </div>
                   </div>
-                  
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-lg bg-trust/10">
-                      <Phone className="h-5 w-5 text-trust" />
-                    </div>
+
+                  <div className="flex items-start gap-3">
+                    <Phone className="h-4 w-4 mt-0.5 shrink-0 text-[color:var(--hero-kicker)]" aria-hidden />
                     <div>
-                      <div className="font-medium text-foreground">Phone</div>
+                      <div className="text-[9px] font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-0.5">
+                        Phone
+                      </div>
                       <div className="text-muted-foreground">+91 8019081414</div>
                     </div>
                   </div>
-                  
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-lg bg-care/20 shrink-0">
-                      <MapPin className="h-5 w-5 text-care" aria-hidden />
-                    </div>
+
+                  <div className="flex items-start gap-3">
+                    <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-[color:var(--hero-kicker)]" aria-hidden />
                     <div className="min-w-0">
-                      <div className="font-medium text-foreground">Postal address</div>
+                      <div className="text-[9px] font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-0.5">
+                        Postal address
+                      </div>
                       <a
                         href={ORGANIZATION_MAPS_URL}
                         target="_blank"
@@ -252,33 +278,37 @@ const ContactSection = () => {
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-care text-care-foreground shadow-card">
-              <CardContent className="p-8">
-                <h3 className="text-xl font-bold mb-4">Ways to engage</h3>
-                <p className="mb-6 opacity-90">
+            <Card className="rounded-sm border-border/80 shadow-none bg-foreground text-background">
+              <CardContent className="p-8 md:p-10">
+                <p className="text-[9px] font-semibold uppercase tracking-[0.28em] text-[color:var(--hero-kicker)] mb-4">
+                  Ways to engage
+                </p>
+                <p className="text-sm text-background/65 mb-6 leading-relaxed">
                   Pick the path that fits you — we read every message and respond as soon as we can.
                 </p>
-                <ul className="space-y-2 text-sm">
+                <ul className="space-y-2.5 text-sm text-background/80">
                   <li className="flex gap-2">
-                    <span className="text-care-foreground/80">→</span>
+                    <span className="text-[color:var(--hero-kicker)] shrink-0">→</span>
                     <span>Try Aayu or ask about a senior in your life</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-care-foreground/80">→</span>
+                    <span className="text-[color:var(--hero-kicker)] shrink-0">→</span>
                     <span>Bring Curiosity Coach to your school or district</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-care-foreground/80">→</span>
+                    <span className="text-[color:var(--hero-kicker)] shrink-0">→</span>
                     <span>Join or host a Thinking Matters cohort</span>
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-hero shadow-card">
-              <CardContent className="p-8 text-center">
-                <h3 className="text-xl font-bold text-foreground mb-4">Prefer to explore first?</h3>
-                <p className="text-muted-foreground mb-6">
+            <Card className="rounded-sm border-border/80 shadow-none bg-card">
+              <CardContent className="p-8 md:p-10 text-center md:text-left">
+                <h3 className="font-serif text-lg font-semibold text-foreground mb-3 tracking-tight">
+                  Prefer to explore first?
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   Scroll up to read about our initiatives, philosophy, and team — then come back here
                   when you&apos;re ready to talk.
                 </p>

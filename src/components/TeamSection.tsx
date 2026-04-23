@@ -74,36 +74,42 @@ const advisors: AdvisorProfile[] = [
 
 const TeamSection = () => {
   return (
-    <section id="team" className="scroll-mt-24 py-20 bg-muted/30" aria-labelledby="team-heading">
-      <div className="container mx-auto px-4">
-        <h2
-          id="team-heading"
-          className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-center"
-        >
-          Team &amp; advisors
+    <section id="team" className="scroll-mt-24 brand-section bg-card" aria-labelledby="team-heading">
+      <div className="brand-page">
+        <span className="brand-label">People</span>
+        <h2 id="team-heading" className="brand-heading max-w-3xl">
+          Team &amp; <em>advisors</em>
         </h2>
-        <p className="text-center text-muted-foreground max-w-2xl mx-auto mb-14">
+        <p className="brand-body mb-12 md:mb-14 max-w-2xl">
           Leadership and advisors united around one mission: AI that gives people back their agency.
         </p>
 
-        <div className="max-w-4xl mx-auto space-y-10 mb-16">
-          <Card className="shadow-card">
-            <CardContent className="p-8 space-y-4">
-              <p className="text-sm font-medium text-primary mb-0">{founder.role}</p>
-              <h3 className="text-2xl font-bold text-foreground">{founder.name}</h3>
+        <div className="max-w-4xl space-y-0.5 mb-14 md:mb-16">
+          <Card className="rounded-sm border-border/80 bg-background shadow-none">
+            <CardContent className="p-8 md:p-10 space-y-4">
+              <p className="text-[9px] font-semibold uppercase tracking-[0.26em] text-[color:var(--hero-kicker)]">
+                {founder.role}
+              </p>
+              <h3 className="font-serif text-2xl md:text-3xl font-semibold text-foreground tracking-tight">
+                {founder.name}
+              </h3>
               {founder.paragraphs.map((text, i) => (
-                <p key={`founder-${i}`} className="text-muted-foreground leading-relaxed">
+                <p key={`founder-${i}`} className="text-sm text-muted-foreground leading-[1.78]">
                   {text}
                 </p>
               ))}
             </CardContent>
           </Card>
-          <Card className="shadow-card">
-            <CardContent className="p-8 space-y-4">
-              <p className="text-sm font-medium text-primary mb-0">{ceo.role}</p>
-              <h3 className="text-2xl font-bold text-foreground">{ceo.name}</h3>
+          <Card className="rounded-sm border-border/80 bg-background shadow-none">
+            <CardContent className="p-8 md:p-10 space-y-4">
+              <p className="text-[9px] font-semibold uppercase tracking-[0.26em] text-[color:var(--hero-kicker)]">
+                {ceo.role}
+              </p>
+              <h3 className="font-serif text-2xl md:text-3xl font-semibold text-foreground tracking-tight">
+                {ceo.name}
+              </h3>
               {ceo.paragraphs.map((text, i) => (
-                <p key={`ceo-${i}`} className="text-muted-foreground leading-relaxed">
+                <p key={`ceo-${i}`} className="text-sm text-muted-foreground leading-[1.78]">
                   {text}
                 </p>
               ))}
@@ -111,16 +117,18 @@ const TeamSection = () => {
           </Card>
         </div>
 
-        <h3 className="text-xl font-semibold text-foreground mb-8 text-center">Advisors</h3>
-        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <p className="text-[9px] font-semibold uppercase tracking-[0.28em] text-[color:var(--hero-kicker)] mb-6">
+          Advisors
+        </p>
+        <div className="grid md:grid-cols-2 gap-0.5 max-w-5xl">
           {advisors.map((member) => (
-            <Card key={member.name} className="shadow-soft hover:shadow-card transition-shadow">
-              <CardContent className="p-6">
-                <p className="text-xs font-medium text-primary uppercase tracking-wide mb-1">
+            <Card key={member.name} className="rounded-sm border-border/80 bg-background shadow-none">
+              <CardContent className="p-6 md:p-8">
+                <p className="text-[9px] font-semibold uppercase tracking-[0.22em] text-muted-foreground mb-2">
                   {member.role}
                 </p>
-                <h4 className="text-lg font-bold text-foreground mb-3">{member.name}</h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">{member.bio}</p>
+                <h4 className="font-serif text-lg font-semibold text-foreground mb-3">{member.name}</h4>
+                <p className="text-xs text-muted-foreground leading-relaxed">{member.bio}</p>
               </CardContent>
             </Card>
           ))}

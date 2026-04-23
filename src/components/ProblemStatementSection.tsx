@@ -22,32 +22,35 @@ const ProblemStatementSection = () => {
   return (
     <section
       id="problem"
-      className="scroll-mt-24 py-20 bg-gradient-to-b from-background to-muted/20"
+      className="scroll-mt-24 brand-section bg-background"
       aria-labelledby="problem-heading"
     >
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center mb-14">
-          <h2 id="problem-heading" className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-            The Problem We&apos;re Solving
-          </h2>
-          <p className="text-lg text-muted-foreground">
-            Three short columns — the human truth behind each initiative.
-          </p>
-        </div>
+      <div className="brand-page">
+        <span className="brand-label">The challenge</span>
+        <h2 id="problem-heading" className="brand-heading max-w-3xl">
+          The problem we&apos;re <em>solving</em>
+        </h2>
+        <p className="brand-body mb-12 md:mb-14">
+          Three human truths — the foundation for Aayu, Curiosity Coach, and Thinking Matters.
+        </p>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="brand-grid grid-cols-1 md:grid-cols-3 max-w-brand">
           {columns.map((col) => {
             const Icon = col.icon;
             return (
               <div
                 key={col.title}
-                className="flex flex-col rounded-2xl border border-border bg-card/60 p-8 text-left shadow-soft"
+                className="brand-cell bg-card p-8 md:p-10 md:min-h-[280px] flex flex-col border border-border/80"
               >
-                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
-                  <Icon className="h-7 w-7 text-primary" aria-hidden />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">{col.title}</h3>
-                <p className="text-muted-foreground leading-relaxed text-sm md:text-base">{col.body}</p>
+                <Icon
+                  className="h-6 w-6 text-[color:var(--hero-kicker)] shrink-0 mb-6"
+                  strokeWidth={1.5}
+                  aria-hidden
+                />
+                <p className="text-[9px] font-semibold uppercase tracking-[0.26em] text-[color:var(--hero-kicker)] mb-3">
+                  {col.title}
+                </p>
+                <p className="text-xs md:text-[13px] text-muted-foreground leading-[1.75]">{col.body}</p>
               </div>
             );
           })}

@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 /** Semantic colours: #hex in theme.css; Tailwind uses rgb(from var(…) …) for opacity. */
 export default {
@@ -19,6 +20,14 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+				serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+				display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+			},
+			maxWidth: {
+				brand: '1080px',
+			},
 			colors: {
 				border: 'rgb(from var(--border) r g b / <alpha-value>)',
 				input: 'rgb(from var(--input) r g b / <alpha-value>)',
@@ -166,5 +175,5 @@ export default {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [tailwindcssAnimate],
 } satisfies Config;

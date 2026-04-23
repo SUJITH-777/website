@@ -1,10 +1,10 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Heart, Stethoscope, Users, Calendar, Brain, Smartphone } from "lucide-react";
+import { UsersRound, Stethoscope, Users, Calendar, Brain, Smartphone } from "lucide-react";
 
 const ProblemsSection = () => {
   const problems = [
     {
-      icon: Heart,
+      icon: UsersRound,
       title: "Emotional & Social Isolation",
       description: "Nuclear families and urban migration leave many seniors feeling lonely and disconnected from their support systems.",
       stats: "65% of Indian seniors experience loneliness",
