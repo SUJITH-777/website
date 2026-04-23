@@ -105,13 +105,6 @@ const HeroSection = () => {
                 of life.
               </p>
             </div>
-
-            <div className="absolute -top-4 -right-4 rounded-xl bg-card p-4 shadow-card animate-gentle-bounce">
-              <Sparkles className="h-8 w-8 text-[color:var(--hero-kicker)]" aria-hidden />
-            </div>
-            <div className="absolute -bottom-4 -left-4 rounded-xl bg-[color:var(--hero-badge)] p-4 text-foreground shadow-card">
-              <span className="text-sm font-medium">Agency-first AI</span>
-            </div>
           </div>
         </div>
       </div>
