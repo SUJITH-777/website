@@ -1,6 +1,6 @@
 const AboutSection = () => {
   return (
-    <section id="about" className="scroll-mt-24 brand-section bg-background">
+    <section id="about" className="scroll-mt-28 brand-section bg-background">
       <div className="brand-page">
         <span className="brand-label">About</span>
         <h2 className="brand-heading max-w-3xl">

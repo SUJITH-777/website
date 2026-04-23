@@ -74,7 +74,7 @@ const advisors: AdvisorProfile[] = [
 
 const TeamSection = () => {
   return (
-    <section id="team" className="scroll-mt-24 brand-section bg-card" aria-labelledby="team-heading">
+    <section id="team" className="scroll-mt-28 brand-section bg-card" aria-labelledby="team-heading">
       <div className="brand-page">
         <span className="brand-label">People</span>
         <h2 id="team-heading" className="brand-heading max-w-3xl">

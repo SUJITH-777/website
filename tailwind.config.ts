@@ -26,7 +26,7 @@ export default {
 				display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
 			},
 			maxWidth: {
-				brand: '1080px',
+				brand: '1000px',
 			},
 			colors: {
 				border: 'rgb(from var(--border) r g b / <alpha-value>)',

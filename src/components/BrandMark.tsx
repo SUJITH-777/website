@@ -59,6 +59,40 @@ export function HybridMark({
   );
 }
 
+/** Brand Identity v1 — Inquiry Arc (preferred direction A, currentColor). */
+export function InquiryArcMark({
+  className,
+  size = 80,
+  ...props
+}: SVGProps<SVGSVGElement> & { size?: number }) {
+  return (
+    <svg
+      className={className}
+      width={size}
+      height={size}
+      viewBox="0 0 80 80"
+      fill="none"
+      aria-hidden
+      {...props}
+    >
+      <path
+        d="M 40 6 A 34 34 0 1 0 72 48"
+        stroke="currentColor"
+        strokeWidth="3.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M 40 18 A 22 22 0 1 0 62 50"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        opacity="0.4"
+      />
+      <circle cx="72" cy="48" r="5" fill="currentColor" />
+    </svg>
+  );
+}
+
 /** Brand Identity v2 — trinity / orbit mark (currentColor). */
 export function TrinityMarkV2({
   className,

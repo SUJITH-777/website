@@ -37,7 +37,7 @@
   }
 
   .brand-label {
-    @apply block text-[9px] font-semibold uppercase tracking-[0.34em] text-[color:var(--hero-kicker)] mb-3.5;
+    @apply block text-[10px] font-medium uppercase tracking-[0.3em] text-[color:var(--hero-kicker)] mb-3.5;
   }
 
   .brand-heading {
@@ -61,26 +61,30 @@
   }
 
   .brand-grid {
-    @apply grid gap-0.5;
+    @apply grid gap-[3px];
   }
 
   .brand-cell {
     @apply bg-background border border-border/0;
   }
 
-  /* v2 ink band on dark canvas (not shadcn bg-foreground — that token is light text colour) */
+  /* v1 .quote-band — ink-2 strip on cream site */
   .brand-dark-band {
-    background-color: #0b100d;
-    color: #f2f0ea;
+    background-color: var(--quote-band-bg);
+    color: var(--quote-band-fg);
   }
 
   .brand-dark-band .brand-body {
     @apply max-w-none;
-    color: color-mix(in srgb, #f2f0ea 65%, #0b100d);
+    color: color-mix(in srgb, var(--quote-band-fg) 68%, var(--quote-band-bg));
   }
 
   .brand-dark-band .brand-label {
     @apply text-[color:var(--hero-kicker)];
+  }
+
+  .brand-dark-band .band-muted {
+    color: color-mix(in srgb, var(--quote-band-fg) 70%, var(--quote-band-bg));
   }
 
   .brand-btn-p {

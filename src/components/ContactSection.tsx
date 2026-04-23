@@ -87,7 +87,7 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" className="scroll-mt-24 brand-section bg-background">
+    <section id="contact" className="scroll-mt-28 brand-section bg-background">
       <div className="brand-page">
         <div className="mb-14 md:mb-16 animate-fade-in">
           <Badge variant="brand" className="mb-5">
@@ -126,7 +126,7 @@ const ContactSection = () => {
                           className={`p-3 rounded-sm border text-left transition-colors ${
                             active
                               ? "border-primary/60 bg-primary text-primary-foreground"
-                              : "border-white/15 bg-card hover:border-white/30"
+                              : "border-border bg-card hover:border-foreground/20"
                           }`}
                         >
                           <span className="mb-1 block">
@@ -283,10 +283,10 @@ const ContactSection = () => {
                 <p className="text-[9px] font-semibold uppercase tracking-[0.28em] text-[color:var(--hero-kicker)] mb-4">
                   Ways to engage
                 </p>
-                <p className="text-sm text-foreground/65 mb-6 leading-relaxed">
+                <p className="band-muted text-sm mb-6 leading-relaxed">
                   Pick the path that fits you — we read every message and respond as soon as we can.
                 </p>
-                <ul className="space-y-2.5 text-sm text-foreground/80">
+                <ul className="band-muted space-y-2.5 text-sm">
                   <li className="flex gap-2">
                     <span className="text-[color:var(--hero-kicker)] shrink-0">→</span>
                     <span>Try Aayu or ask about a senior in your life</span>

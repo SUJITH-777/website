@@ -2,7 +2,7 @@ import { Badge } from "@/components/ui/badge";
 
 const PhilosophySection = () => {
   return (
-    <section id="philosophy" className="scroll-mt-24 brand-section bg-background" aria-labelledby="philosophy-heading">
+    <section id="philosophy" className="scroll-mt-28 brand-section bg-background" aria-labelledby="philosophy-heading">
       <div className="brand-page">
         <Badge variant="brand" className="mb-5">
           Our philosophy
