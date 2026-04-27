@@ -26,7 +26,8 @@ export default {
 				display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
 			},
 			maxWidth: {
-				brand: '1000px',
+				/** Editorial width — was 1000px; wider canvas for hero + initiatives. */
+				brand: 'min(100%, 1180px)',
 			},
 			colors: {
 				border: 'rgb(from var(--border) r g b / <alpha-value>)',

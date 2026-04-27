@@ -102,9 +102,9 @@ const ContactSection = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-0.5 lg:gap-1 items-start">
-          <Card className="animate-slide-up rounded-sm border-border/80 shadow-none bg-card">
-            <CardContent className="p-8 md:p-10">
+        <div className="grid max-w-brand items-stretch gap-0.5 lg:grid-cols-2 lg:gap-1">
+          <Card className="flex h-full min-h-0 animate-slide-up flex-col rounded-sm border-border/80 bg-card shadow-none">
+            <CardContent className="flex flex-1 flex-col p-8 md:p-10">
               <h3 className="font-serif text-xl md:text-2xl font-semibold text-foreground mb-6 tracking-tight">
                 Send us a message
               </h3>
@@ -226,8 +226,8 @@ const ContactSection = () => {
             </CardContent>
           </Card>
 
-          <div className="space-y-0.5 animate-fade-in">
-            <Card className="rounded-sm border-border/80 shadow-none bg-card">
+          <div className="flex h-full min-h-0 flex-col gap-0.5 animate-fade-in">
+            <Card className="shrink-0 rounded-sm border-border/80 bg-card shadow-none">
               <CardContent className="p-8 md:p-10">
                 <h3 className="font-serif text-lg font-semibold text-foreground mb-6 tracking-tight">
                   Get in touch
@@ -278,40 +278,28 @@ const ContactSection = () => {
               </CardContent>
             </Card>
 
-            <Card className="brand-dark-band rounded-sm border border-white/10 shadow-none">
-              <CardContent className="p-8 md:p-10">
-                <p className="text-[9px] font-semibold uppercase tracking-[0.28em] text-[color:var(--hero-kicker)] mb-4">
+            <Card className="flex min-h-0 flex-1 flex-col rounded-sm border-border/80 bg-card shadow-none">
+              <CardContent className="flex flex-1 flex-col p-8 md:p-10">
+                <p className="mb-4 text-[9px] font-semibold uppercase tracking-[0.28em] text-[color:var(--hero-kicker)]">
                   Ways to engage
                 </p>
-                <p className="band-muted text-sm mb-6 leading-relaxed">
+                <p className="mb-6 text-sm leading-relaxed text-foreground">
                   Pick the path that fits you — we read every message and respond as soon as we can.
                 </p>
-                <ul className="band-muted space-y-2.5 text-sm">
+                <ul className="space-y-2.5 text-sm leading-relaxed text-foreground">
                   <li className="flex gap-2">
-                    <span className="text-[color:var(--hero-kicker)] shrink-0">→</span>
+                    <span className="shrink-0 text-[color:var(--hero-kicker)]">→</span>
                     <span>Try Aayu or ask about a senior in your life</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-[color:var(--hero-kicker)] shrink-0">→</span>
+                    <span className="shrink-0 text-[color:var(--hero-kicker)]">→</span>
                     <span>Bring Curiosity Coach to your school or district</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-[color:var(--hero-kicker)] shrink-0">→</span>
+                    <span className="shrink-0 text-[color:var(--hero-kicker)]">→</span>
                     <span>Join or host a Thinking Matters cohort</span>
                   </li>
                 </ul>
-              </CardContent>
-            </Card>
-
-            <Card className="rounded-sm border-border/80 shadow-none bg-card">
-              <CardContent className="p-8 md:p-10 text-center md:text-left">
-                <h3 className="font-serif text-lg font-semibold text-foreground mb-3 tracking-tight">
-                  Prefer to explore first?
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Scroll up to read about our initiatives, philosophy, and team — then come back here
-                  when you&apos;re ready to talk.
-                </p>
               </CardContent>
             </Card>
           </div>

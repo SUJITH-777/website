@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/carousel";
 import { ArrowRight, Brain, Lightbulb, Users } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { GendaMark } from "@/components/BrandMark";
 
 const HERO_INITIATIVES: {
   id: string;
@@ -78,7 +77,7 @@ function HeroInitiativeCarousel({ scrollTo }: { scrollTo: (id: string) => void }
   }, [api]);
 
   return (
-    <div className="relative mx-auto w-full min-w-0 max-w-full sm:max-w-md lg:mx-0 lg:max-w-none">
+    <div className="relative mx-auto w-full min-w-0 max-w-full sm:max-w-xl lg:mx-0 lg:max-w-none">
       <div className="relative max-w-full overflow-hidden rounded-sm border border-border bg-background text-foreground shadow-card">
         <div
           className="pointer-events-none absolute inset-0 opacity-40"
@@ -107,22 +106,22 @@ function HeroInitiativeCarousel({ scrollTo }: { scrollTo: (id: string) => void }
               const Icon = item.icon;
               return (
                 <CarouselItem key={item.id} className="pl-0 basis-full">
-                  <div className="flex min-h-[320px] flex-col px-6 pb-8 pt-9 text-center md:min-h-[340px] md:px-8 md:pb-9 md:pt-10">
-                    <div className="mb-5 flex justify-center">
-                      <span className="rounded-full border border-[color:color-mix(in_srgb,var(--hero-kicker)_35%,transparent)] bg-[color:color-mix(in_srgb,var(--hero-kicker)_10%,transparent)] p-3 text-[color:var(--hero-kicker)]">
-                        <Icon className="h-7 w-7" strokeWidth={1.35} aria-hidden />
+                  <div className="flex min-h-[360px] flex-col px-7 pb-9 pt-10 text-center sm:min-h-[380px] md:min-h-[400px] md:px-10 md:pb-10 md:pt-11">
+                    <div className="mb-6 flex justify-center">
+                      <span className="rounded-full border border-[color:color-mix(in_srgb,var(--hero-kicker)_35%,transparent)] bg-[color:color-mix(in_srgb,var(--hero-kicker)_10%,transparent)] p-3.5 text-[color:var(--hero-kicker)] md:p-4">
+                        <Icon className="h-8 w-8 md:h-9 md:w-9" strokeWidth={1.35} aria-hidden />
                       </span>
                     </div>
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[color:var(--hero-kicker)]">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[color:var(--hero-kicker)] md:text-[11px]">
                       {item.label}
                     </p>
-                    <h3 className="mt-3 font-serif text-lg font-semibold leading-snug tracking-tight text-foreground md:text-xl">
+                    <h3 className="mt-3 font-serif text-xl font-semibold leading-snug tracking-tight text-foreground md:text-2xl md:leading-snug">
                       {item.title}
                     </h3>
-                    <p className="mt-4 flex-1 text-center text-sm font-light leading-relaxed text-muted-foreground md:text-[15px]">
+                    <p className="mt-5 flex-1 text-center text-[15px] font-light leading-relaxed text-muted-foreground md:text-base md:leading-relaxed">
                       {item.description}
                     </p>
-                    <div className="mt-6 flex justify-center">
+                    <div className="mt-7 flex justify-center md:mt-8">
                       <Button
                         type="button"
                         variant="outline"
@@ -225,37 +224,26 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="scroll-mt-32 relative min-h-[min(100svh,52rem)] overflow-x-clip overflow-y-hidden bg-[color:var(--cover-ink)] pt-32 pb-16 text-center md:pt-32 md:pb-24 md:text-left"
+      className="scroll-mt-32 relative min-h-[min(100svh,52rem)] overflow-x-clip overflow-y-hidden bg-[color:var(--cover-ink)] pt-32 pb-20 text-center md:pt-32 md:pb-28 md:text-left"
     >
       <CoverArcDecor />
 
       <div className="brand-page relative z-[1]">
-        <div className="grid w-full min-w-0 max-w-full items-start gap-12 lg:grid-cols-[1fr_minmax(0,26rem)] lg:gap-14">
+        <div className="grid w-full min-w-0 max-w-full items-start gap-10 pt-8 md:pt-12 lg:pt-16 xl:pt-20 lg:grid-cols-[minmax(0,1fr)_minmax(22rem,36rem)] lg:gap-12 xl:gap-14">
           <div className="animate-fade-in min-w-0 max-w-full">
-            <p className="mb-10 text-[10px] font-medium uppercase tracking-[0.3em] text-[color:var(--hero-kicker)] opacity-70 md:mb-10">
+            <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.26em] text-[color:var(--hero-kicker)] opacity-80 md:mb-7 md:text-[12px] md:tracking-[0.28em]">
               Swarn Aayu Foundation
             </p>
-
-            <div className="mb-10 flex justify-center md:mb-10 md:justify-start">
-              <span className="text-[color:var(--hero-kicker)]" aria-hidden>
-                <GendaMark size={80} />
-              </span>
-            </div>
-
-            <h1 className="max-w-full break-words font-serif font-semibold leading-[0.95] tracking-[-0.015em] text-[clamp(2.5rem,8vw,6.75rem)] text-[color:var(--cover-cream)]">
-              Swarn <em className="italic text-[color:var(--hero-kicker)]">Aayu</em>
-            </h1>
-
-            <p className="mx-auto mt-8 max-w-full text-pretty text-[15px] font-light leading-[1.75] tracking-[0.02em] text-[color:var(--cover-muted)] sm:max-w-[26rem] md:mx-0 md:mt-10">
+            <h1 className="mx-auto max-w-full text-pretty font-serif text-[clamp(1.35rem,4.2vw,1.75rem)] font-semibold leading-snug tracking-[-0.01em] text-[color:var(--cover-cream)] sm:max-w-[26rem] md:mx-0">
               AI that gives people back their agency — seniors, children, and everyone in between.
-            </p>
+            </h1>
 
             <p className="mx-auto mt-8 max-w-full text-pretty text-left text-sm font-light leading-[1.82] tracking-wide text-[color:var(--cover-muted)] sm:max-w-xl md:mx-0 md:mt-10 md:text-[15px]">
               Swarn Aayu is a foundation building AI-led tools for seniors, children, and lifelong
               learners — designed not to answer for you, but to help you find your own way.
             </p>
 
-            <div className="mt-10 flex min-w-0 max-w-full flex-col items-stretch justify-center gap-3 sm:flex-row sm:justify-start md:mt-12">
+            <div className="mt-14 flex min-w-0 max-w-full flex-col items-stretch justify-center gap-3 sm:flex-row sm:justify-start md:mt-16 lg:mt-20">
               <Button
                 variant="hero"
                 size="lg"
@@ -277,7 +265,7 @@ const HeroSection = () => {
           </div>
 
           <div className="relative min-w-0 max-w-full animate-slide-up lg:sticky lg:top-32">
-            <p className="mb-4 text-center text-[10px] font-medium uppercase tracking-[0.28em] text-[color:var(--hero-kicker)] opacity-90 lg:text-left">
+            <p className="mb-4 text-center text-[11px] font-medium uppercase tracking-[0.26em] text-[color:var(--hero-kicker)] opacity-90 md:tracking-[0.28em] lg:text-left">
               Our initiatives
             </p>
             <HeroInitiativeCarousel scrollTo={scrollToSection} />

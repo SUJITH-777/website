@@ -81,7 +81,7 @@ const Footer = () => {
           ))}
         </div>
 
-        <div className="mx-auto flex w-full max-w-brand flex-col gap-8 border-t footer-rule pt-10 md:flex-row md:items-start md:justify-between">
+        <div className="mx-auto flex w-full max-w-brand flex-col gap-8 border-t footer-rule pt-10 md:flex-row md:items-start md:justify-between md:gap-10">
           <div className="flex items-start gap-3">
             <span className="text-[color:var(--hero-kicker)] shrink-0 mt-0.5" aria-hidden>
               <GendaMark size={28} />
@@ -95,30 +95,33 @@ const Footer = () => {
               </p>
             </div>
           </div>
-          <div className="flex min-w-0 flex-col gap-3 text-sm md:items-end footer-muted">
-            <div className="flex max-w-lg items-start gap-2">
-              <Mail className="mt-0.5 h-4 w-4 shrink-0 opacity-90 text-[color:var(--hero-kicker)]" aria-hidden />
-              <a href="mailto:contact@swarnaayu.com" className="footer-link break-words leading-snug">
-                contact@swarnaayu.com
-              </a>
-            </div>
-            <div className="flex max-w-lg items-start gap-2">
-              <Phone className="mt-0.5 h-4 w-4 shrink-0 opacity-90 text-[color:var(--hero-kicker)]" aria-hidden />
-              <span className="leading-snug">+91 8019081414</span>
-            </div>
-            <div className="flex max-w-lg items-start gap-2">
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 opacity-90 text-[color:var(--hero-kicker)]" aria-hidden />
-              <a
-                href={ORGANIZATION_MAPS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer-link inline-flex items-start gap-1.5 leading-snug text-pretty break-words"
-                aria-label={`Open address in Google Maps: ${ORGANIZATION_ADDRESS}`}
-              >
-                <span>{ORGANIZATION_ADDRESS}</span>
-                <ExternalLink className="mt-0.5 h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden />
-              </a>
-            </div>
+          <div className="grid min-w-0 w-full max-w-xl grid-cols-[1.25rem_minmax(0,1fr)] items-start gap-x-3 gap-y-4 text-left text-sm footer-muted md:ml-auto md:max-w-lg">
+            <Mail
+              className="mt-0.5 h-4 w-4 shrink-0 justify-self-start opacity-90 text-[color:var(--hero-kicker)]"
+              aria-hidden
+            />
+            <a href="mailto:contact@swarnaayu.com" className="footer-link min-w-0 break-words leading-snug">
+              contact@swarnaayu.com
+            </a>
+            <Phone
+              className="mt-0.5 h-4 w-4 shrink-0 justify-self-start opacity-90 text-[color:var(--hero-kicker)]"
+              aria-hidden
+            />
+            <span className="min-w-0 leading-snug">+91 8019081414</span>
+            <MapPin
+              className="mt-0.5 h-4 w-4 shrink-0 justify-self-start opacity-90 text-[color:var(--hero-kicker)]"
+              aria-hidden
+            />
+            <a
+              href={ORGANIZATION_MAPS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-link inline-flex min-w-0 items-start gap-1.5 leading-snug text-pretty break-words"
+              aria-label={`Open address in Google Maps: ${ORGANIZATION_ADDRESS}`}
+            >
+              <span>{ORGANIZATION_ADDRESS}</span>
+              <ExternalLink className="mt-0.5 h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden />
+            </a>
           </div>
         </div>
 

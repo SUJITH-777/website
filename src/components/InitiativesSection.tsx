@@ -190,8 +190,8 @@ const InitiativesSection = () => {
               Meet Curiosity Coach — AI that teaches children to <em>think,</em> not what to think
             </h3>
           </div>
-          <div className="grid lg:grid-cols-2 gap-0.5 lg:gap-1 items-start max-w-brand">
-            <div className="space-y-4 text-sm text-muted-foreground leading-[1.78] bg-background border border-border/80 p-8 md:p-10">
+          <div className="grid max-w-brand items-stretch gap-0.5 lg:grid-cols-2 lg:gap-1">
+            <div className="flex h-full min-h-0 flex-col space-y-4 border border-border/80 bg-background p-8 text-sm leading-[1.78] text-muted-foreground md:p-10">
               <p>
                 Every AI tool built for children today does one thing well: it gives answers.
                 Instantly. Confidently. Without friction.
@@ -212,15 +212,19 @@ const InitiativesSection = () => {
                 We didn&apos;t build this for productivity. We built it for curiosity.
               </p>
             </div>
-            <Card className="rounded-sm border-border/80 shadow-none bg-background">
-              <CardContent className="p-8 md:p-10 space-y-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-sm bg-card ring-1 ring-border/60">
+            <Card className="flex h-full min-h-0 flex-col rounded-sm border-border/80 bg-background shadow-none">
+              <CardContent className="flex flex-1 flex-col gap-6 p-8 md:p-10">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm bg-card ring-1 ring-border/60">
                   <Lightbulb className="h-6 w-6 text-[color:var(--hero-kicker)]" />
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed">
+                <p className="text-xs leading-relaxed text-muted-foreground">
                   Co-created with teachers and learning psychologists. Continuously measured for impact.
                 </p>
-                <Button variant="hero" className="brand-btn-p w-full sm:w-auto" onClick={() => scrollTo("contact")}>
+                <Button
+                  variant="hero"
+                  className="brand-btn-p mt-auto w-full sm:w-auto"
+                  onClick={() => scrollTo("contact")}
+                >
                   Get in touch for your school
                 </Button>
               </CardContent>

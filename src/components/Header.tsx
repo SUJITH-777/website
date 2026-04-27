@@ -27,13 +27,8 @@ const Header = () => {
           <span className="shrink-0 text-[color:var(--hero-kicker)]" aria-hidden>
             <GendaMark size={34} className="shrink-0" />
           </span>
-          <span className="flex min-w-0 flex-col gap-1 text-left">
-            <span className="font-sans text-[8px] md:text-[9px] font-medium uppercase tracking-[0.28em] text-[color:var(--hero-kicker)] leading-none">
-              Swarn Aayu Foundation
-            </span>
-            <span className="font-serif text-[17px] md:text-[19px] font-semibold tracking-[0.02em] text-foreground leading-none">
-              Swarn Aayu
-            </span>
+          <span className="font-serif text-[17px] md:text-[19px] font-semibold tracking-[0.02em] text-foreground leading-none">
+            Swarn Aayu
           </span>
         </button>
 
