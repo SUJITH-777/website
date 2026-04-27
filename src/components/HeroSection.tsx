@@ -78,8 +78,8 @@ function HeroInitiativeCarousel({ scrollTo }: { scrollTo: (id: string) => void }
   }, [api]);
 
   return (
-    <div className="relative w-full max-w-md mx-auto lg:mx-0 lg:max-w-none">
-      <div className="relative overflow-hidden rounded-sm border border-border bg-background text-foreground shadow-card">
+    <div className="relative mx-auto w-full min-w-0 max-w-full sm:max-w-md lg:mx-0 lg:max-w-none">
+      <div className="relative max-w-full overflow-hidden rounded-sm border border-border bg-background text-foreground shadow-card">
         <div
           className="pointer-events-none absolute inset-0 opacity-40"
           aria-hidden
@@ -225,13 +225,13 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="scroll-mt-32 relative min-h-[min(100svh,52rem)] overflow-hidden bg-[color:var(--cover-ink)] pt-32 pb-16 text-center md:pt-32 md:pb-24 md:text-left"
+      className="scroll-mt-32 relative min-h-[min(100svh,52rem)] overflow-x-clip overflow-y-hidden bg-[color:var(--cover-ink)] pt-32 pb-16 text-center md:pt-32 md:pb-24 md:text-left"
     >
       <CoverArcDecor />
 
       <div className="brand-page relative z-[1]">
-        <div className="grid items-start gap-12 lg:grid-cols-[1fr_minmax(0,26rem)] lg:gap-14">
-          <div className="animate-fade-in">
+        <div className="grid w-full min-w-0 max-w-full items-start gap-12 lg:grid-cols-[1fr_minmax(0,26rem)] lg:gap-14">
+          <div className="animate-fade-in min-w-0 max-w-full">
             <p className="mb-10 text-[10px] font-medium uppercase tracking-[0.3em] text-[color:var(--hero-kicker)] opacity-70 md:mb-10">
               Swarn Aayu Foundation
             </p>
@@ -242,41 +242,41 @@ const HeroSection = () => {
               </span>
             </div>
 
-            <h1 className="font-serif font-semibold leading-[0.95] tracking-[-0.015em] text-[clamp(3.25rem,9vw,6.75rem)] text-[color:var(--cover-cream)]">
+            <h1 className="max-w-full break-words font-serif font-semibold leading-[0.95] tracking-[-0.015em] text-[clamp(2.5rem,8vw,6.75rem)] text-[color:var(--cover-cream)]">
               Swarn <em className="italic text-[color:var(--hero-kicker)]">Aayu</em>
             </h1>
 
-            <p className="mx-auto mt-8 max-w-[26rem] text-[15px] font-light leading-[1.75] tracking-[0.02em] text-[color:var(--cover-muted)] md:mx-0 md:mt-10">
+            <p className="mx-auto mt-8 max-w-full text-pretty text-[15px] font-light leading-[1.75] tracking-[0.02em] text-[color:var(--cover-muted)] sm:max-w-[26rem] md:mx-0 md:mt-10">
               AI that gives people back their agency — seniors, children, and everyone in between.
             </p>
 
-            <p className="mx-auto mt-8 max-w-xl text-left text-sm font-light leading-[1.82] tracking-wide text-[color:var(--cover-muted)] md:mx-0 md:mt-10 md:text-[15px]">
+            <p className="mx-auto mt-8 max-w-full text-pretty text-left text-sm font-light leading-[1.82] tracking-wide text-[color:var(--cover-muted)] sm:max-w-xl md:mx-0 md:mt-10 md:text-[15px]">
               Swarn Aayu is a foundation building AI-led tools for seniors, children, and lifelong
               learners — designed not to answer for you, but to help you find your own way.
             </p>
 
-            <div className="mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:justify-start md:mt-12">
+            <div className="mt-10 flex min-w-0 max-w-full flex-col items-stretch justify-center gap-3 sm:flex-row sm:justify-start md:mt-12">
               <Button
                 variant="hero"
                 size="lg"
                 onClick={() => scrollToSection("problem")}
-                className="group brand-btn-p"
+                className="group brand-btn-p !whitespace-normal break-words px-4 text-center sm:px-6 w-full min-w-0 sm:w-auto"
               >
                 The problem we&apos;re solving
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="ml-2 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" />
               </Button>
               <Button
                 variant="outline"
                 size="lg"
                 onClick={() => scrollToSection("our-work")}
-                className="brand-btn-p border-white/45 bg-transparent text-[#f5f0e8] shadow-none hover:border-white/70 hover:bg-white/10 hover:text-white"
+                className="brand-btn-p !whitespace-normal break-words px-4 text-center sm:px-6 w-full min-w-0 border-white/45 bg-transparent text-[#f5f0e8] shadow-none hover:border-white/70 hover:bg-white/10 hover:text-white sm:w-auto"
               >
                 Our work
               </Button>
             </div>
           </div>
 
-          <div className="relative animate-slide-up lg:sticky lg:top-32">
+          <div className="relative min-w-0 max-w-full animate-slide-up lg:sticky lg:top-32">
             <p className="mb-4 text-center text-[10px] font-medium uppercase tracking-[0.28em] text-[color:var(--hero-kicker)] opacity-90 lg:text-left">
               Our initiatives
             </p>
