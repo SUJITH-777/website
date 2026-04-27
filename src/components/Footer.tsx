@@ -2,7 +2,7 @@ import { Mail, Phone, MapPin, ExternalLink } from "lucide-react";
 import { APP_STORE_URL, PLAY_STORE_URL } from "@/constants/app-links";
 import { FOOTER_COLUMNS } from "@/config/site";
 import { ORGANIZATION_ADDRESS, ORGANIZATION_MAPS_URL } from "@/constants/contact";
-import { InquiryArcMark } from "@/components/BrandMark";
+import { GendaMark } from "@/components/BrandMark";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -84,7 +84,7 @@ const Footer = () => {
         <div className="mx-auto flex w-full max-w-brand flex-col gap-8 border-t footer-rule pt-10 md:flex-row md:items-start md:justify-between">
           <div className="flex items-start gap-3">
             <span className="text-[color:var(--hero-kicker)] shrink-0 mt-0.5" aria-hidden>
-              <InquiryArcMark size={26} />
+              <GendaMark size={28} />
             </span>
             <div>
               <h3 className="font-serif text-lg font-semibold text-[color:var(--footer-fg)]">Swarn Aayu</h3>

@@ -12,7 +12,7 @@ import {
   Brain,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { GoldHeartSquircle, InquiryArcMark } from "@/components/BrandMark";
+import { GoldHeartSquircle, GendaMark } from "@/components/BrandMark";
 import { PLAY_STORE_URL } from "@/constants/app-links";
 
 const scrollTo = (id: string) => {
@@ -61,7 +61,7 @@ const aayuFeatures: AayuFeature[] = [
 
 const InitiativesSection = () => {
   return (
-    <section id="our-work" className="scroll-mt-28 brand-strip border-b border-border" aria-labelledby="our-work-heading">
+    <section id="our-work" className="scroll-mt-32 brand-strip border-b border-border" aria-labelledby="our-work-heading">
       <div className="brand-page py-20 md:py-24">
         <span className="brand-label">Our work</span>
         <h2 id="our-work-heading" className="brand-heading max-w-3xl">
@@ -73,7 +73,7 @@ const InitiativesSection = () => {
         </p>
 
         {/* Aayu */}
-        <div id="aayu" className="scroll-mt-28 pb-16 md:pb-20 border-b border-border">
+        <div id="aayu" className="scroll-mt-32 pb-16 md:pb-20 border-b border-border">
           <div className="mb-12">
             <Badge variant="brand" className="mb-5">
               Aayu
@@ -147,7 +147,7 @@ const InitiativesSection = () => {
               aria-label="Visual representing Aayu for seniors, Curiosity Coach for children, and Thinking Matters for lifelong learners"
             >
               <div className="flex items-center gap-2 text-[9px] font-semibold uppercase tracking-[0.28em] text-[color:var(--hero-kicker)]">
-                <InquiryArcMark className="shrink-0" size={20} aria-hidden />
+                <GendaMark className="shrink-0" size={20} aria-hidden />
                 One foundation, three paths
               </div>
               <div className="grid w-full max-w-sm grid-cols-3 gap-0.5 text-center">
@@ -174,14 +174,14 @@ const InitiativesSection = () => {
                 Warm, human-centred AI — built for agency across every stage of life.
               </p>
               <div className="absolute -top-3 -right-3 rounded-sm border border-border bg-card p-2 shadow-card text-[color:var(--hero-kicker)]">
-                <InquiryArcMark size={22} aria-hidden />
+                <GendaMark size={22} aria-hidden />
               </div>
             </div>
           </div>
         </div>
 
         {/* Curiosity Coach */}
-        <div id="curiosity-coach" className="scroll-mt-28 py-16 md:py-20 border-b border-border">
+        <div id="curiosity-coach" className="scroll-mt-32 py-16 md:py-20 border-b border-border">
           <div className="mb-10">
             <Badge variant="brand" className="mb-5">
               Curiosity Coach
@@ -229,7 +229,7 @@ const InitiativesSection = () => {
         </div>
 
         {/* Thinking Matters */}
-        <div id="thinking-matters" className="scroll-mt-28 pt-16 md:pt-20">
+        <div id="thinking-matters" className="scroll-mt-32 pt-16 md:pt-20">
           <div className="mb-10">
             <Badge variant="brand" className="mb-5">
               Thinking Matters

@@ -1,5 +1,36 @@
 import type { SVGProps } from "react";
 
+/** Mark A — Genda (marigold): eight petals around a bindu; brand identity v4. */
+export function GendaMark({
+  className,
+  size = 32,
+  ...props
+}: SVGProps<SVGSVGElement> & { size?: number }) {
+  return (
+    <svg
+      className={className}
+      width={size}
+      height={size}
+      viewBox="0 0 80 80"
+      fill="none"
+      aria-hidden
+      {...props}
+    >
+      <g fill="currentColor" opacity={0.92}>
+        <path d="M40 10Q47 20 40 32Q33 20 40 10Z" />
+        <path d="M40 10Q47 20 40 32Q33 20 40 10Z" transform="rotate(45 40 40)" />
+        <path d="M40 10Q47 20 40 32Q33 20 40 10Z" transform="rotate(90 40 40)" />
+        <path d="M40 10Q47 20 40 32Q33 20 40 10Z" transform="rotate(135 40 40)" />
+        <path d="M40 10Q47 20 40 32Q33 20 40 10Z" transform="rotate(180 40 40)" />
+        <path d="M40 10Q47 20 40 32Q33 20 40 10Z" transform="rotate(225 40 40)" />
+        <path d="M40 10Q47 20 40 32Q33 20 40 10Z" transform="rotate(270 40 40)" />
+        <path d="M40 10Q47 20 40 32Q33 20 40 10Z" transform="rotate(315 40 40)" />
+      </g>
+      <circle cx="40" cy="40" r="9" fill="currentColor" />
+    </svg>
+  );
+}
+
 /** Inline marks from Swarn Aayu Brand Identity — gold via `currentColor`. */
 export function UdayaMark({
   className,

@@ -87,7 +87,7 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" className="scroll-mt-28 brand-section bg-background">
+    <section id="contact" className="scroll-mt-32 brand-section bg-background">
       <div className="brand-page">
         <div className="mb-14 md:mb-16 animate-fade-in">
           <Badge variant="brand" className="mb-5">

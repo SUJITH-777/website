@@ -22,7 +22,7 @@ const ProblemStatementSection = () => {
   return (
     <section
       id="problem"
-      className="scroll-mt-28 brand-section bg-background"
+      className="scroll-mt-32 brand-section bg-background"
       aria-labelledby="problem-heading"
     >
       <div className="brand-page">
