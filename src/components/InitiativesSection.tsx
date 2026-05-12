@@ -207,7 +207,7 @@ const InitiativesSection = () => {
               <p>
                 Aayu is a voice-based AI companion built specifically for seniors. It doesn&apos;t
                 just chat — it listens, remembers, checks in, and helps navigate the texture of daily
-                life. From coordinating care with trusted services like Portea and Anvayaa, to
+                life. From coordinating care with trusted services like Harito and Wisdom Circle, to
                 simply being there at the end of a long day, Aayu is built around one idea: every
                 senior deserves to feel heard.
               </p>
@@ -217,7 +217,7 @@ const InitiativesSection = () => {
               </p>
             </div>
             <p className="mt-6 text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
-              Works with: Portea · Anvayaa · Vayah Vikas · and more
+              Works with: Harito · Wisdom Circle · Vayah Vikas · and more
             </p>
             <div className="mt-8">
               <Button variant="hero" size="lg" className="brand-btn-p" asChild>
