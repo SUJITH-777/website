@@ -1,6 +1,13 @@
+import { useCallback, useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 import {
   Ear,
   Clock,
@@ -9,15 +16,126 @@ import {
   Activity,
   ExternalLink,
   Lightbulb,
-  Brain,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { GoldHeartSquircle, GendaMark } from "@/components/BrandMark";
 import { PLAY_STORE_URL } from "@/constants/app-links";
+import aayuWelcome from "@/assets/app/aayu-welcome.png";
+import aayuTapToSpeak from "@/assets/app/aayu-tap-to-speak.png";
 
 const scrollTo = (id: string) => {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 };
+
+/** Time each Aayu app screenshot stays visible before auto-advancing (ms). */
+const AAYU_APP_AUTOPLAY_MS = 4500;
+
+const aayuAppScreens: { src: string; alt: string }[] = [
+  {
+    src: aayuWelcome,
+    alt: "Aayu app welcome screen — Talk to a Friend, Anytime",
+  },
+  {
+    src: aayuTapToSpeak,
+    alt: "Aayu app home screen — Tap to Speak with Aayu",
+  },
+];
+
+function AayuAppCarousel() {
+  const [api, setApi] = useState<CarouselApi>();
+  const [active, setActive] = useState(0);
+
+  const onSelect = useCallback((instance: CarouselApi) => {
+    setActive(instance.selectedScrollSnap());
+  }, []);
+
+  useEffect(() => {
+    if (!api) return;
+    onSelect(api);
+    api.on("reInit", onSelect);
+    api.on("select", onSelect);
+    return () => {
+      api.off("select", onSelect);
+      api.off("reInit", onSelect);
+    };
+  }, [api, onSelect]);
+
+  useEffect(() => {
+    if (!api) return;
+    const id = window.setInterval(() => {
+      api.scrollNext(false);
+    }, AAYU_APP_AUTOPLAY_MS);
+    return () => window.clearInterval(id);
+  }, [api]);
+
+  return (
+    <div
+      className="relative flex w-full flex-col items-center justify-center gap-5 animate-fade-in"
+      role="region"
+      aria-label="Aayu app preview"
+    >
+      {/* Phone frame — width-driven, floats gently */}
+      <div className="relative w-full max-w-[180px] sm:max-w-[195px] md:max-w-[210px] animate-float">
+        <div className="relative rounded-[2.25rem] border-[10px] border-[#1a1614] bg-[#1a1614] shadow-[0_24px_60px_-22px_rgba(0,0,0,0.45),0_10px_22px_-12px_rgba(201,168,94,0.28)]">
+          <Carousel
+            setApi={setApi}
+            opts={{
+              loop: true,
+              align: "start",
+              duration: 52,
+              watchDrag: false,
+            }}
+            className="relative overflow-hidden rounded-[1.5rem]"
+            aria-label="Aayu app screenshots"
+          >
+            <CarouselContent className="-ml-0">
+              {aayuAppScreens.map((screen, index) => (
+                <CarouselItem key={index} className="pl-0 basis-full">
+                  <div className="relative aspect-[9/19.5] w-full bg-[#1a1614]">
+                    <img
+                      src={screen.src}
+                      alt={screen.alt}
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover object-center"
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+        </div>
+        {/* Soft warm glow under the floating phone */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-6 left-1/2 h-10 w-4/5 -translate-x-1/2 rounded-full bg-[color:var(--hero-kicker)] opacity-25 blur-2xl"
+        />
+      </div>
+
+      {/* Dot indicators */}
+      <div
+        className="flex shrink-0 justify-center gap-2"
+        role="tablist"
+        aria-label="Choose Aayu app screen"
+      >
+        {aayuAppScreens.map((_, i) => (
+          <button
+            key={i}
+            type="button"
+            role="tab"
+            aria-selected={active === i}
+            aria-label={`Show app screen ${i + 1}`}
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              active === i
+                ? "w-7 bg-[color:var(--hero-kicker)]"
+                : "w-1.5 bg-muted-foreground/35 hover:bg-muted-foreground/55"
+            }`}
+            onClick={() => api?.scrollTo(i)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 type AayuFeature = {
   icon: LucideIcon | "goldHeart";
@@ -142,36 +260,17 @@ const InitiativesSection = () => {
               })}
             </div>
             <div
-              className="relative animate-fade-in flex min-h-[320px] flex-col items-center justify-center gap-6 rounded-sm border border-border bg-background p-8 md:p-10 shadow-card"
+              className="relative animate-fade-in flex h-full min-h-[320px] flex-col items-center justify-center gap-5 rounded-sm border border-border bg-background p-6 md:p-8 shadow-card"
               role="img"
-              aria-label="Visual representing Aayu for seniors, Curiosity Coach for children, and Thinking Matters for lifelong learners"
+              aria-label="Aayu app preview"
             >
-              <div className="flex items-center gap-2 text-[9px] font-semibold uppercase tracking-[0.28em] text-[color:var(--hero-kicker)]">
+              <div className="flex shrink-0 items-center gap-2 text-[9px] font-semibold uppercase tracking-[0.28em] text-[color:var(--hero-kicker)]">
                 <GendaMark className="shrink-0" size={20} aria-hidden />
-                One foundation, three paths
+                Meet Aayu on your phone
               </div>
-              <div className="grid w-full max-w-sm grid-cols-3 gap-0.5 text-center">
-                <div className="flex flex-col items-center gap-2 bg-card py-4 ring-1 ring-border/60">
-                  <Users className="h-6 w-6 text-[color:var(--hero-kicker)]" aria-hidden />
-                  <span className="text-[8px] font-semibold uppercase tracking-[0.2em] text-muted-foreground px-1">
-                    Golden years
-                  </span>
-                </div>
-                <div className="flex flex-col items-center gap-2 bg-card py-4 ring-1 ring-border/60">
-                  <Lightbulb className="h-6 w-6 text-[color:var(--hero-kicker)]" aria-hidden />
-                  <span className="text-[8px] font-semibold uppercase tracking-[0.2em] text-muted-foreground px-1">
-                    Growing minds
-                  </span>
-                </div>
-                <div className="flex flex-col items-center gap-2 bg-card py-4 ring-1 ring-border/60">
-                  <Brain className="h-6 w-6 text-foreground/70" aria-hidden />
-                  <span className="text-[8px] font-semibold uppercase tracking-[0.2em] text-muted-foreground px-1">
-                    Clear thinking
-                  </span>
-                </div>
-              </div>
-              <p className="max-w-xs text-center text-[11px] leading-relaxed text-muted-foreground">
-                Warm, human-centred AI — built for agency across every stage of life.
+              <AayuAppCarousel />
+              <p className="max-w-xs shrink-0 text-center text-[11px] leading-relaxed text-muted-foreground">
+                Voice-first companion — designed for seniors, built for everyday use.
               </p>
               <div className="absolute -top-3 -right-3 rounded-sm border border-border bg-card p-2 shadow-card text-[color:var(--hero-kicker)]">
                 <GendaMark size={22} aria-hidden />
