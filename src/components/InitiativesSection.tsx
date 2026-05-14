@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { GoldHeartSquircle, GendaMark } from "@/components/BrandMark";
-import { PLAY_STORE_URL } from "@/constants/app-links";
+import { APP_STORE_URL, PLAY_STORE_URL } from "@/constants/app-links";
 import aayuWelcome from "@/assets/app/aayu-welcome.png";
 import aayuTapToSpeak from "@/assets/app/aayu-tap-to-speak.png";
 
@@ -219,10 +219,16 @@ const InitiativesSection = () => {
             <p className="mt-6 text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
               Works with: Harito · Wisdom Circle · Vayah Vikas · and more
             </p>
-            <div className="mt-8">
+            <div className="mt-8 flex flex-wrap items-center gap-3">
               <Button variant="hero" size="lg" className="brand-btn-p" asChild>
                 <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer">
                   Download on Android
+                  <ExternalLink className="ml-2 h-4 w-4" aria-hidden />
+                </a>
+              </Button>
+              <Button variant="hero" size="lg" className="brand-btn-p" asChild>
+                <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
+                  Download on iOS
                   <ExternalLink className="ml-2 h-4 w-4" aria-hidden />
                 </a>
               </Button>
