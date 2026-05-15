@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Linkedin } from "lucide-react";
 import tvgPhoto from "@/assets/team/tvg-krishnamurthy.webp";
 import ektaPhoto from "@/assets/team/ekta-tibrewal.avif";
 import vijayPhoto from "@/assets/team/vijay-sharma.jpg";
@@ -15,6 +16,8 @@ type LeadershipProfile = {
   photo: string;
   /** CSS object-position value tuned to each headshot's framing. */
   photoPosition?: string;
+  /** LinkedIn profile URL — icon only renders when set. */
+  linkedin?: string;
   paragraphs: string[];
 };
 
@@ -24,14 +27,37 @@ type AdvisorProfile = {
   photo: string;
   /** CSS object-position value tuned to each headshot's framing. */
   photoPosition?: string;
+  /** LinkedIn profile URL — icon only renders when set. */
+  linkedin?: string;
   bio: string;
 };
+
+/**
+ * LinkedIn icon link in brand gold (#c9a85e) — chosen over LinkedIn's official blue
+ * because the site's editorial cream + gold palette has no blue. Default is a
+ * subtle muted tone so the icon doesn't fight the name; hover lights up in gold.
+ */
+function LinkedInLink({ url, name }: { url?: string; name: string }) {
+  if (!url) return null;
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${name} on LinkedIn`}
+      className="inline-flex items-center justify-center rounded-sm p-1 text-muted-foreground/70 transition-colors hover:bg-[color:var(--hero-kicker)]/10 hover:text-[color:var(--hero-kicker)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--hero-kicker)] focus-visible:ring-offset-1"
+    >
+      <Linkedin className="h-4 w-4" strokeWidth={1.75} aria-hidden />
+    </a>
+  );
+}
 
 const founder: LeadershipProfile = {
   name: "TVG Krishnamurthy",
   role: "Founder",
   photo: tvgPhoto,
   photoPosition: "center top",
+  linkedin: "https://www.linkedin.com/in/tvg-krishnamurthy/",
   paragraphs: [
     `TVG Krishnamurthy has spent over four decades at the board level — working with MNCs and domestic businesses, and mentoring some of India's most recognised companies including Indegene, Ola, and Practo.`,
     `But what has always driven him isn't business. It's curiosity. Why do things need to be the way they are? How can they be rearranged to create something that actually matters?`,
@@ -45,6 +71,7 @@ const ceo: LeadershipProfile = {
   role: "Chief Executive Officer",
   photo: ektaPhoto,
   photoPosition: "center 15%",
+  linkedin: "https://www.linkedin.com/in/ekta-tibrewal/",
   paragraphs: [
     `Ekta Tibrewal works at the intersection of AI and healthcare — as a builder, operator, and strategic advisor.`,
     `She came to Swarn Aayu through a career spent scaling things that matter. She founded a women's health company that grew into one of India's most engaged communities in that space, and raised funding from leading VCs across India and globally. Before that, she built and scaled digital businesses across some of India's most recognised consumer health brands.`,
@@ -59,6 +86,7 @@ const advisors: AdvisorProfile[] = [
     role: "Mentor & Advisor",
     photo: vijayPhoto,
     photoPosition: "center top",
+    linkedin: "https://www.linkedin.com/in/vijaysw/",
     bio: `Vijay is a serial entrepreneur and one of the early builders of India's talent technology space. A BITS Pilani alumnus, he co-founded and led one of India's pioneering AI-driven recruitment platforms, working closely with some of the country's most recognised consumer and healthcare startups. He brings deep experience in product thinking, early-stage company building, and the intersection of AI and human systems.`,
   },
   {
@@ -66,6 +94,7 @@ const advisors: AdvisorProfile[] = [
     role: "Chief Technology Officer",
     photo: saitejaPhoto,
     photoPosition: "center center",
+    linkedin: "https://www.linkedin.com/in/saitejaveera/",
     bio: `Saiteja is a BITS Pilani alumnus and founder of Gamyam Technologies. He has spent his career at the forefront of AI and technology-led ventures, with prior experience in building and scaling tech-first startups across India. At Swarn Aayu, he leads the technology architecture behind all three initiatives.`,
   },
   {
@@ -73,6 +102,7 @@ const advisors: AdvisorProfile[] = [
     role: "Mentor & Advisor",
     photo: neerajPhoto,
     photoPosition: "center 30%",
+    linkedin: "https://www.linkedin.com/in/neerajsagar/",
     bio: `Neeraj spent fifteen years as a Senior Partner at Egon Zehnder before making a deliberate pivot at 50 — founding WisdomCircle, a platform dedicated to helping experienced professionals find relevance and purpose beyond retirement. His work is rooted in a simple conviction: the wisdom of older generations is one of India's most underutilised resources. He brings both lived experience and institutional credibility to Swarn Aayu's mission for seniors.`,
   },
   {
@@ -80,6 +110,7 @@ const advisors: AdvisorProfile[] = [
     role: "Advisor",
     photo: akshayPhoto,
     photoPosition: "center 20%",
+    linkedin: "https://www.linkedin.com/in/akshayasaxena/",
     bio: `Akshay is the co-founder of Avanti Fellows and an Ashoka Fellow recognised globally for his work on equitable access to education. He has spent over a decade building systems that ensure children from underserved communities have the guidance and resources to reach their potential. He brings deep expertise in learning design, public school systems, and scaling impact in education to the Curiosity Coach initiative.`,
   },
   {
@@ -87,6 +118,7 @@ const advisors: AdvisorProfile[] = [
     role: "Advisor",
     photo: tristhaPhoto,
     photoPosition: "center 25%",
+    linkedin: "https://www.linkedin.com/in/tristha/",
     bio: `Dr. Tristha founded Ekya Schools in 2010, building it into one of Bangalore's most respected progressive school networks. A Stanford and King's College London alumna with a doctorate in education, she has spent her career rethinking how children learn — drawing on inquiry-based and design thinking approaches from institutions around the world. She advises Swarn Aayu on curriculum design, pedagogy, and the learning science behind Curiosity Coach.`,
   },
   {
@@ -94,6 +126,7 @@ const advisors: AdvisorProfile[] = [
     role: "Advisor & Education Project Partner",
     photo: santoshPhoto,
     photoPosition: "center center",
+    linkedin: "https://www.linkedin.com/in/santosh-more-m4c/",
     bio: `Santosh is the co-founder of Mantra4Change, a Bangalore-based nonprofit that has worked with state governments across India to transform how public schools teach and lead. A Teach For India alumnus and Schwab Fellow, his work sits at the intersection of systemic reform and grassroots school change — impacting millions of children across tens of thousands of schools. He brings that systems-level lens to Swarn Aayu's education work.`,
   },
   {
@@ -101,6 +134,7 @@ const advisors: AdvisorProfile[] = [
     role: "Psychology Advisor",
     photo: divyaPhoto,
     photoPosition: "center center",
+    linkedin: "https://www.linkedin.com/in/dr-divya-kannan-4a740a99/",
     bio: `Dr. Divya Kannan holds a PhD from the University of Memphis and spent years as a Licensed Clinical Psychologist and faculty member at Vanderbilt University Medical Center, where she specialised in trauma, PTSD, and psychotherapy outcomes research. Now based in Bangalore, she brings rigorous clinical grounding to the psychological design of Aayu — ensuring the AI's approach to emotional wellbeing, conversation, and care is rooted in evidence, not intuition.`,
   },
 ];
@@ -132,9 +166,12 @@ const TeamSection = () => {
                   <p className="text-[9px] font-semibold uppercase tracking-[0.26em] text-[color:var(--hero-kicker)]">
                     {founder.role}
                   </p>
-                  <h3 className="font-serif text-2xl md:text-3xl font-semibold text-foreground tracking-tight">
-                    {founder.name}
-                  </h3>
+                  <div className="flex items-center gap-2">
+                    <h3 className="font-serif text-2xl md:text-3xl font-semibold text-foreground tracking-tight">
+                      {founder.name}
+                    </h3>
+                    <LinkedInLink url={founder.linkedin} name={founder.name} />
+                  </div>
                   {founder.paragraphs.map((text, i) => (
                     <p key={`founder-${i}`} className="text-sm text-muted-foreground leading-[1.78]">
                       {text}
@@ -158,9 +195,12 @@ const TeamSection = () => {
                   <p className="text-[9px] font-semibold uppercase tracking-[0.26em] text-[color:var(--hero-kicker)]">
                     {ceo.role}
                   </p>
-                  <h3 className="font-serif text-2xl md:text-3xl font-semibold text-foreground tracking-tight">
-                    {ceo.name}
-                  </h3>
+                  <div className="flex items-center gap-2">
+                    <h3 className="font-serif text-2xl md:text-3xl font-semibold text-foreground tracking-tight">
+                      {ceo.name}
+                    </h3>
+                    <LinkedInLink url={ceo.linkedin} name={ceo.name} />
+                  </div>
                   {ceo.paragraphs.map((text, i) => (
                     <p key={`ceo-${i}`} className="text-sm text-muted-foreground leading-[1.78]">
                       {text}
@@ -191,7 +231,10 @@ const TeamSection = () => {
                     <p className="text-[9px] font-semibold uppercase tracking-[0.22em] text-muted-foreground mb-2">
                       {member.role}
                     </p>
-                    <h4 className="font-serif text-lg font-semibold text-foreground">{member.name}</h4>
+                    <div className="flex items-center gap-1.5">
+                      <h4 className="font-serif text-lg font-semibold text-foreground">{member.name}</h4>
+                      <LinkedInLink url={member.linkedin} name={member.name} />
+                    </div>
                   </div>
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed">{member.bio}</p>
